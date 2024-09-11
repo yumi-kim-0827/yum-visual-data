@@ -1,0 +1,19 @@
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url("/fonts/NanumSquareRoundR.ttf") format("truetype"),
+    url("/fonts/NanumSquareRoundB.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  font-family: "NanumSquareRound", sans-serif;
+}

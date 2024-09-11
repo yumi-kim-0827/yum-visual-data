@@ -1,0 +1,27 @@
+{
+  "name": "yum-visual-data",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@amcharts/amcharts5": "^5.10.5",
+    "autoprefixer": "^10.4.20",
+    "next": "14.2.9",
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.8.2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.9",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10"
+  }
+}
