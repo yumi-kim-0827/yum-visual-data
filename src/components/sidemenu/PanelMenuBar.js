@@ -25,7 +25,7 @@ export default function PanelMenuBar() {
               command: () => router.push("/create/bar/barChart1"),
             },
             {
-              label: "100% 누적 막대그래프",
+              label: "두 항목 비율 비교 그래프",
               icon: "pi pi-users",
               command: () => router.push("/create/bar/barChart2"),
             },

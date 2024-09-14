@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 
-const FullStackedColumnChart = ({ myData }) => {
+const TwoCategoryStackedChart = ({ myData }) => {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
     root._logo.dispose();
@@ -18,15 +18,15 @@ const FullStackedColumnChart = ({ myData }) => {
       })
     );
 
-    // 데이타 셋
     let data = myData;
 
+    // Create axes
     let xRenderer = am5xy.AxisRendererX.new(root, {
       minorGridEnabled: true,
     });
     let xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
-        categoryField: "year",
+        categoryField: "categoryName",
         renderer: xRenderer,
         tooltip: am5.Tooltip.new(root, {}),
       })
@@ -52,7 +52,6 @@ const FullStackedColumnChart = ({ myData }) => {
     );
 
     // Add legend
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
     let legend = chart.children.push(
       am5.Legend.new(root, {
         centerX: am5.p50,
@@ -61,7 +60,6 @@ const FullStackedColumnChart = ({ myData }) => {
     );
 
     // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
     function makeSeries(name, fieldName) {
       let series = chart.series.push(
         am5xy.ColumnSeries.new(root, {
@@ -71,7 +69,7 @@ const FullStackedColumnChart = ({ myData }) => {
           yAxis: yAxis,
           valueYField: fieldName,
           valueYShow: "valueYTotalPercent",
-          categoryXField: "year",
+          categoryXField: "categoryName",
         })
       );
 
@@ -82,8 +80,6 @@ const FullStackedColumnChart = ({ myData }) => {
       });
       series.data.setAll(data);
 
-      // Make stuff animate on load
-      // https://www.amcharts.com/docs/v5/concepts/animations/
       series.appear();
 
       series.bullets.push(function () {
@@ -101,10 +97,12 @@ const FullStackedColumnChart = ({ myData }) => {
       legend.data.push(series);
     }
 
-    makeSeries("Europe", "europe");
-    makeSeries("North America", "namerica");
+    let twoKeys = Object.keys(data[0]);
+    let renderNumber = twoKeys.length - 1; // 2
 
-    chart.appear(1000, 100);
+    for (let i = 0; i < renderNumber; i++) {
+      makeSeries(`${twoKeys[i + 1]}`, `${twoKeys[i + 1]}`);
+    }
 
     return () => {
       root.dispose();
@@ -114,4 +112,4 @@ const FullStackedColumnChart = ({ myData }) => {
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 };
 
-export default FullStackedColumnChart;
+export default TwoCategoryStackedChart;
