@@ -22,7 +22,12 @@ export default function PanelMenuBar() {
             {
               label: "수직 라벨 막대그래프",
               icon: "pi pi-users",
-              command: () => router.push("/create/bar/verticalLabel"),
+              command: () => router.push("/create/bar/barChart1"),
+            },
+            {
+              label: "100% 누적 막대그래프",
+              icon: "pi pi-users",
+              command: () => router.push("/create/bar/barChart2"),
             },
           ],
         },
