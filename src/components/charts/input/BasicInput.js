@@ -4,7 +4,10 @@ import { InputText } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
 import { Button } from "primereact/button";
 
-export default function BasicInput({ handleClickDataUpdate }) {
+export default function BasicInput({
+  handleClickDataUpdate,
+  handleClickDataDelete,
+}) {
   //입력 데이터
   const [input, setInput] = useState({
     category: "",
@@ -32,7 +35,9 @@ export default function BasicInput({ handleClickDataUpdate }) {
     });
   };
 
-  const onDelete = () => {};
+  const onDelete = () => {
+    handleClickDataDelete();
+  };
 
   return (
     <div className="flex gap-2">
@@ -59,7 +64,7 @@ export default function BasicInput({ handleClickDataUpdate }) {
         label="마지막 데이터 삭제"
         severity="info"
         icon="pi pi-trash"
-        onClick={onSubmit}
+        onClick={onDelete}
       />
     </div>
   );

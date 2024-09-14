@@ -19,10 +19,18 @@ export default function Home() {
   const handleClickDataUpdate = (input) => {
     setData((prev) => [...prev, { ...input, value: parseInt(input.value) }]);
   };
+  //마지막 데이터 삭제 핸들러
+  const handleClickDataDelete = () => {
+    setData((prev) => prev.slice(0, -1));
+  };
+
   return (
     <main className="flex-1 flex flex-col gap-2">
       <Fieldset legend="데이터 추가하기">
-        <BasicInput handleClickDataUpdate={handleClickDataUpdate} />
+        <BasicInput
+          handleClickDataUpdate={handleClickDataUpdate}
+          handleClickDataDelete={handleClickDataDelete}
+        />
       </Fieldset>
       <Fieldset legend="그래프">
         <VerticalLabelBarChart myData={myData} />
