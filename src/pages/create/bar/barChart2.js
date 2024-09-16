@@ -19,8 +19,9 @@ const TwoCategoryStackedChart = dynamic(
 export default function Home() {
   const [categoryName1, setCategoryName1] = useState("항목1");
   const [categoryName2, setCategoryName2] = useState("항목2");
-  const [category1data, setCategory1data] = useState({ c: 4.1 });
-  const [category2data, setCategory2data] = useState({ c: 4.1 });
+  const [formFirstData, setFormFirstData] = useState({});
+  const [firstDataKey, setFirstDataKey] = useState("");
+  const [firstDataValue, setFirstDataValue] = useState(null);
 
   //최종 데이터
   const [myData, setMyData] = useState([
@@ -39,7 +40,7 @@ export default function Home() {
       {
         categoryName: `${categoryName1}`,
         A: 2.5,
-        B: 2.5,
+        B: 2,
       },
       {
         categoryName: `${categoryName2}`,
@@ -48,7 +49,7 @@ export default function Home() {
       },
     ]);
   }, [categoryName1, categoryName2]);
-
+  console.log(formFirstData);
   return (
     <main className="flex-1 flex flex-col gap-2">
       <Fieldset legend="데이터 추가하기">
@@ -98,17 +99,37 @@ export default function Home() {
             <Badge value="첫번쨰 데이터 값" className="mb-2"></Badge>
             <div className="flex items-center gap-2">
               <FloatLabel>
-                <InputText id="username" name="category" value={""} />
+                <InputText
+                  id="username"
+                  name="category"
+                  value={firstDataKey}
+                  onChange={(e) => {
+                    setFirstDataKey(e.target.value);
+                  }}
+                />
                 <label for="username">데이터 명</label>
               </FloatLabel>
               <FloatLabel>
-                <InputText id="username" name="category" value={""} />
+                <InputText
+                  id="username"
+                  name="category"
+                  value={firstDataValue}
+                  onChange={(e) => {
+                    setFirstDataValue(e.target.value);
+                  }}
+                />
                 <label for="username">데이터값</label>
               </FloatLabel>
               <Button
                 label="데이터 추가"
                 icon="pi pi-plus-circle"
-                // onClick={onSubmit}
+                onClick={() => {
+                  setFormFirstData((prev) => ({
+                    ...prev,
+                    [firstDataKey]: firstDataValue,
+                  }));
+                  console.log(formFirstData);
+                }}
               />
             </div>
           </div>
