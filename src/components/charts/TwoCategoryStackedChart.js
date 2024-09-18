@@ -19,7 +19,7 @@ const TwoCategoryStackedChart = ({ myData }) => {
     );
 
     let data = myData;
-    console.log(data);
+    console.log(myData);
     // Create axes
     let xRenderer = am5xy.AxisRendererX.new(root, {
       minorGridEnabled: true,

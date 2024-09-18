@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 //components
 import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
 import { Message } from "primereact/message";
 import { Badge } from "primereact/badge";
 import { FloatLabel } from "primereact/floatlabel";
@@ -19,19 +20,18 @@ const TwoCategoryStackedChart = dynamic(
 export default function Home() {
   const [categoryName1, setCategoryName1] = useState("항목1");
   const [categoryName2, setCategoryName2] = useState("항목2");
-  const [formFirstData, setFormFirstData] = useState({});
   const [firstDataKey, setFirstDataKey] = useState("");
   const [firstDataValue, setFirstDataValue] = useState(null);
+  const [secondDataKey, setSecondDataKey] = useState("");
+  const [secondDataValue, setSecondDataValue] = useState(null);
 
   //최종 데이터
   const [myData, setMyData] = useState([
     {
       categoryName: `${categoryName1}`,
-      A: 2.5,
     },
     {
       categoryName: `${categoryName2}`,
-      A: 2.6,
     },
   ]);
 
@@ -39,17 +39,38 @@ export default function Home() {
     setMyData([
       {
         categoryName: `${categoryName1}`,
-        A: 2.5,
-        B: 2,
       },
       {
         categoryName: `${categoryName2}`,
-        A: 2.6,
-        B: 3,
       },
     ]);
+    console.log(myData);
   }, [categoryName1, categoryName2]);
-  console.log(formFirstData);
+
+  useEffect(() => {
+    console.log(myData);
+  }, [myData]);
+
+  const handleAddFirstData = () => {
+    setMyData((prev) => {
+      const newData = [...prev];
+      newData[0] = { ...newData[0], [firstDataKey]: firstDataValue };
+      return newData;
+    });
+    setFirstDataKey("");
+    setFirstDataValue(null);
+  };
+
+  const handleAddSecondData = () => {
+    setMyData((prev) => {
+      const newData = [...prev];
+      newData[1] = { ...newData[1], [secondDataKey]: secondDataValue };
+      return newData;
+    });
+    setSecondDataKey("");
+    setSecondDataValue(null);
+  };
+
   return (
     <main className="flex-1 flex flex-col gap-2">
       <Fieldset legend="데이터 추가하기">
@@ -74,7 +95,7 @@ export default function Home() {
                     setCategoryName1(e.target.value);
                   }}
                 />
-                <label for="username">첫번째 항목 이름</label>
+                <label htmlFor="username">첫번째 항목 이름</label>
               </FloatLabel>
               <FloatLabel>
                 <InputText
@@ -85,7 +106,7 @@ export default function Home() {
                     setCategoryName2(e.target.value);
                   }}
                 />
-                <label for="username">두번째 항목 이름</label>
+                <label htmlFor="username">두번째 항목 이름</label>
               </FloatLabel>
             </div>
           </div>
@@ -107,47 +128,57 @@ export default function Home() {
                     setFirstDataKey(e.target.value);
                   }}
                 />
-                <label for="username">데이터 명</label>
+                <label htmlFor="username">데이터 명</label>
               </FloatLabel>
               <FloatLabel>
-                <InputText
+                <InputNumber
                   id="username"
                   name="category"
                   value={firstDataValue}
                   onChange={(e) => {
-                    setFirstDataValue(e.target.value);
+                    setFirstDataValue(e.value);
                   }}
                 />
-                <label for="username">데이터값</label>
+                <label htmlFor="username">데이터값</label>
               </FloatLabel>
               <Button
                 label="데이터 추가"
                 icon="pi pi-plus-circle"
-                onClick={() => {
-                  setFormFirstData((prev) => ({
-                    ...prev,
-                    [firstDataKey]: firstDataValue,
-                  }));
-                  console.log(formFirstData);
-                }}
+                onClick={handleAddFirstData}
               />
+            </div>
+            <div>
+              {firstDataKey}
+              {firstDataValue}
             </div>
           </div>
           <div className="flex-1">
-            <Badge value="두번쨰 데이터 값" className="mb-2"></Badge>
+            <Badge value="두번째 데이터 값" className="mb-2"></Badge>
             <div className="flex items-center gap-2">
               <FloatLabel>
-                <InputText id="username" name="category" value={""} />
-                <label for="username">데이터 명</label>
+                <InputText
+                  id="username"
+                  value={secondDataKey}
+                  onChange={(e) => {
+                    setSecondDataKey(e.target.value);
+                  }}
+                />
+                <label htmlFor="username">데이터 명</label>
               </FloatLabel>
               <FloatLabel>
-                <InputText id="username" name="category" value={""} />
-                <label for="username">데이터값</label>
+                <InputNumber
+                  id="username"
+                  value={secondDataValue}
+                  onChange={(e) => {
+                    setSecondDataValue(e.value);
+                  }}
+                />
+                <label htmlFor="username">데이터값</label>
               </FloatLabel>
               <Button
                 label="데이터 추가"
                 icon="pi pi-plus-circle"
-                // onClick={onSubmit}
+                onClick={handleAddSecondData}
               />
             </div>
           </div>
