@@ -54,7 +54,7 @@ export default function BasicInput({
             value={input.category}
             onChange={onChange}
           />
-          <label for="username">데이터명</label>
+          <label htmlFor="username">데이터명</label>
         </FloatLabel>
         <FloatLabel>
           <InputText
@@ -63,7 +63,7 @@ export default function BasicInput({
             value={input.value}
             onChange={onChange}
           />
-          <label for="username">데이터값</label>
+          <label htmlFor="username">데이터값</label>
         </FloatLabel>
         <Button
           label="데이터 추가"
