@@ -6,7 +6,7 @@ import BasicInput from "@/src/components/charts/input/BasicInput";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const VerticalLabelBarChart = dynamic(
-  () => import("@/src/components/charts/VerticalLabelBarChart"),
+  () => import("@/src/components/charts/bar/VerticalLabelBarChart"),
   {
     ssr: false,
   }

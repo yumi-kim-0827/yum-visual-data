@@ -11,7 +11,7 @@ import { Fieldset } from "primereact/fieldset";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const TwoCategoryStackedChart = dynamic(
-  () => import("@/src/components/charts/TwoCategoryStackedChart"),
+  () => import("@/src/components/charts/bar/TwoCategoryStackedChart"),
   {
     ssr: false,
   }

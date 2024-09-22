@@ -8,36 +8,37 @@ export default function PanelMenuBar() {
   const items = [
     {
       label: "그래프차트만들기",
-      icon: "pi pi-file",
+      icon: "pi pi-chart-line",
       items: [
         {
-          label: "막대그래프만들기",
-          icon: "pi pi-file",
+          label: "막대그래프 만들기",
+          icon: "pi pi-chart-bar",
           items: [
             {
               label: "심플 원칼라 막대그래프",
-              icon: "pi pi-file-pdf",
+              icon: "pi pi-pencil",
               command: () => router.push("/create/bar"),
             },
             {
               label: "수직 라벨 막대그래프",
-              icon: "pi pi-users",
+              icon: "pi pi-pencil",
               command: () => router.push("/create/bar/barChart1"),
             },
             {
               label: "두 항목 비율 비교 그래프",
-              icon: "pi pi-users",
+              icon: "pi pi-pencil",
               command: () => router.push("/create/bar/barChart2"),
             },
           ],
         },
         {
-          label: "Images",
-          icon: "pi pi-image",
+          label: "라인그래프 만들기",
+          icon: "pi pi-chart-line",
           items: [
             {
-              label: "Logos",
-              icon: "pi pi-image",
+              label: "심플 원칼라 라인그래프",
+              icon: "pi pi-pencil",
+              command: () => router.push("/create/line"),
             },
           ],
         },
