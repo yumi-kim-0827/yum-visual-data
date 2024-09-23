@@ -9,8 +9,35 @@ const SimpleLineChart = ({ myData }) => {
     root._logo.dispose();
     root.setThemes([am5themes_Animated.new(root)]);
 
+    root.setThemes([am5themes_Animated.new(root)]);
+
+    root.dateFormatter.setAll({
+      dateFormat: "yyyy",
+      dateFields: ["valueX"],
+    });
+
+    // 데이타 셋
+    // Set data
+    let data = [
+      {
+        date: "2012-07-27",
+        value: 13,
+      },
+      {
+        date: "2012-07-28",
+        value: 11,
+      },
+      {
+        date: "2012-07-29",
+        value: 15,
+      },
+    ];
+
+    console.log(data);
+
     let chart = root.container.children.push(
       am5xy.XYChart.new(root, {
+        focusable: true,
         panX: true,
         panY: true,
         wheelX: "panX",
@@ -20,47 +47,18 @@ const SimpleLineChart = ({ myData }) => {
       })
     );
 
-    // Add cursor
-    let cursor = chart.set(
-      "cursor",
-      am5xy.XYCursor.new(root, {
-        behavior: "none",
-      })
-    );
-    cursor.lineY.set("visible", false);
-
-    // 데이타 셋
-    // let data = myData;
-    let date = new Date();
-    date.setHours(0, 0, 0, 0);
-    let value = 100;
-
-    function generateData() {
-      value = Math.round(Math.random() * 10 - 5 + value);
-      am5.time.add(date, "day", 1);
-      return {
-        date: date.getTime(),
-        value: value,
-      };
-    }
-
-    function generateDatas(count) {
-      let data = [];
-      for (var i = 0; i < count; ++i) {
-        data.push(generateData());
-      }
-      return data;
-    }
-
+    // Create axes
     let xAxis = chart.xAxes.push(
       am5xy.DateAxis.new(root, {
-        maxDeviation: 0.2,
+        maxDeviation: 0.1,
+        groupData: false,
         baseInterval: {
           timeUnit: "day",
           count: 1,
         },
         renderer: am5xy.AxisRendererX.new(root, {
           minorGridEnabled: true,
+          minGridDistance: 70,
         }),
         tooltip: am5.Tooltip.new(root, {}),
       })
@@ -68,30 +66,67 @@ const SimpleLineChart = ({ myData }) => {
 
     let yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {
-          pan: "zoom",
-        }),
+        maxDeviation: 0.2,
+        renderer: am5xy.AxisRendererY.new(root, {}),
       })
     );
 
+    // Add series
     let series = chart.series.push(
       am5xy.LineSeries.new(root, {
-        name: "Series",
+        minBulletDistance: 10,
+        connect: false,
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: "value",
         valueXField: "date",
         tooltip: am5.Tooltip.new(root, {
+          pointerOrientation: "horizontal",
           labelText: "{valueY}",
         }),
       })
     );
 
-    // Set data
-    let data = generateDatas(1200);
+    series.fills.template.setAll({
+      fillOpacity: 0.2,
+      visible: true,
+    });
+
+    series.strokes.template.setAll({
+      strokeWidth: 2,
+    });
+
+    // Set up data processor to parse string dates
+    series.data.processor = am5.DataProcessor.new(root, {
+      dateFormat: "yyyy-MM-dd",
+      dateFields: ["date"],
+    });
+
     series.data.setAll(data);
 
-    series.appear(1000);
+    series.bullets.push(function () {
+      let circle = am5.Circle.new(root, {
+        radius: 4,
+        fill: root.interfaceColors.get("background"),
+        stroke: series.get("fill"),
+        strokeWidth: 2,
+      });
+
+      return am5.Bullet.new(root, {
+        sprite: circle,
+      });
+    });
+
+    // Add cursor
+    let cursor = chart.set(
+      "cursor",
+      am5xy.XYCursor.new(root, {
+        xAxis: xAxis,
+        behavior: "none",
+      })
+    );
+
+    cursor.lineY.set("visible", false);
     chart.appear(1000, 100);
 
     return () => {
