@@ -87,13 +87,6 @@ const SimpleLineChart = ({ myData }) => {
       })
     );
 
-    chart.set(
-      "scrollbarX",
-      am5.Scrollbar.new(root, {
-        orientation: "horizontal",
-      })
-    );
-
     // Set data
     let data = generateDatas(1200);
     series.data.setAll(data);
