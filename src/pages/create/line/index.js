@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 //components
 import { Fieldset } from "primereact/fieldset";
-import BasicInput from "@/src/components/charts/input/BasicInput";
+import DateValueInput from "@/src/components/charts/input/DateValueInput";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const SimpleLineChart = dynamic(
@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <main className="flex-1 flex flex-col gap-2">
       <Fieldset legend="데이터 추가하기">
-        <BasicInput
+        <DateValueInput
           handleClickDataUpdate={handleClickDataUpdate}
           handleClickDataDelete={handleClickDataDelete}
         />

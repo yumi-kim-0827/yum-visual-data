@@ -36,7 +36,7 @@ export default function PanelMenuBar() {
           icon: "pi pi-chart-line",
           items: [
             {
-              label: "심플 원칼라 라인그래프",
+              label: "시간에 따른 선그래프",
               icon: "pi pi-pencil",
               command: () => router.push("/create/line"),
             },

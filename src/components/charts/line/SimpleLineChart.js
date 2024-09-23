@@ -20,16 +20,20 @@ const SimpleLineChart = ({ myData }) => {
     // Set data
     let data = [
       {
-        date: "2012-07-27",
+        date: "2024-07-27",
         value: 13,
       },
       {
-        date: "2012-07-28",
+        date: "2024-07-28",
         value: 11,
       },
       {
-        date: "2012-07-29",
+        date: "2024-07-29",
         value: 15,
+      },
+      {
+        date: "2024-07-30",
+        value: 14,
       },
     ];
 
