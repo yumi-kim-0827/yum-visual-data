@@ -45,10 +45,10 @@ export default function DateValueInput({
 
   return (
     <>
-      <Message
-        text="하나의 데이터명과 데이터값을 입력 후 추가할 수 있습니다."
-        className="mb-4"
-      />
+      <div className="flex gap-2">
+        <Message text="날짜별 데이터 수치를 입력합니다." className="mb-4" />
+        <Message text="날짜는 1일씩 연속해야합니다." className="mb-4" />
+      </div>
       <div className="flex gap-2">
         <Calendar value={date} onChange={(e) => setDate(e.value)} />
         <FloatLabel>
