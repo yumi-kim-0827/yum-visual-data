@@ -15,15 +15,20 @@ export default function DateValueInput({
 
   function formatDate(date) {
     if (!date) return;
-    const MM = String(date.getUTCMonth() + 1).padStart(2, "0");
-    const dd = String(date.getUTCDate()).padStart(2, "0");
-    const YYYY = String(date.getUTCFullYear());
+    const localDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    ); // 로컬 타임존으로 변환
+    const MM = String(localDate.getUTCMonth() + 1).padStart(2, "0");
+    const dd = String(localDate.getUTCDate()).padStart(2, "0");
+    const YYYY = String(localDate.getUTCFullYear());
 
     return `${YYYY}-${MM}-${dd}`;
   }
-  console.log(formatDate(date));
 
-  const onChange = (e) => {};
+  const onChange = (e) => {
+    setInput(e.value);
+  };
+  console.log(input);
 
   const onSubmit = () => {};
 
@@ -38,12 +43,15 @@ export default function DateValueInput({
         <Message text="날짜는 1일씩 연속해야합니다." className="mb-4" />
       </div>
       <div className="flex items-center gap-2">
-        <Calendar value={date} onChange={(e) => setDate(e.value)} />
+        <Calendar
+          value={date}
+          onChange={(e) => setDate(e.value ? new Date(e.value) : null)}
+        />
         <FloatLabel>
           <InputNumber
             inputId="integeronly"
             value={input}
-            onValueChange={(e) => onChange(e.value)}
+            onChange={onChange}
           />
           <label htmlFor="username">데이터값</label>
         </FloatLabel>
