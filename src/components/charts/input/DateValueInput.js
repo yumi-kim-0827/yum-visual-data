@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //components
 import { Calendar } from "primereact/calendar";
-import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
 import { Message } from "primereact/message";
 import { FloatLabel } from "primereact/floatlabel";
 import { Button } from "primereact/button";
@@ -11,33 +11,21 @@ export default function DateValueInput({
   handleClickDataDelete,
 }) {
   const [date, setDate] = useState(null);
-  console.log(date);
-  //입력 데이터
-  const [input, setInput] = useState({
-    category: "",
-    value: 0,
-  });
+  const [input, setInput] = useState(null);
 
-  const onChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
+  function formatDate(date) {
+    if (!date) return;
+    const MM = String(date.getUTCMonth() + 1).padStart(2, "0");
+    const dd = String(date.getUTCDate()).padStart(2, "0");
+    const YYYY = String(date.getUTCFullYear());
 
-  const onSubmit = () => {
-    if (isNaN(input.value)) {
-      alert("입력값은 숫자여야 합니다.");
-    } else if (input.category === "") {
-      alert("데이터명을 입력해주세요.");
-    } else {
-      handleClickDataUpdate(input);
-    }
-    setInput({
-      category: "",
-      value: 0,
-    });
-  };
+    return `${YYYY}-${MM}-${dd}`;
+  }
+  console.log(formatDate(date));
+
+  const onChange = (e) => {};
+
+  const onSubmit = () => {};
 
   const onDelete = () => {
     handleClickDataDelete();
@@ -49,14 +37,13 @@ export default function DateValueInput({
         <Message text="날짜별 데이터 수치를 입력합니다." className="mb-4" />
         <Message text="날짜는 1일씩 연속해야합니다." className="mb-4" />
       </div>
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         <Calendar value={date} onChange={(e) => setDate(e.value)} />
         <FloatLabel>
-          <InputText
-            id="username"
-            name="value"
-            value={input.value}
-            onChange={onChange}
+          <InputNumber
+            inputId="integeronly"
+            value={input}
+            onValueChange={(e) => onChange(e.value)}
           />
           <label htmlFor="username">데이터값</label>
         </FloatLabel>
