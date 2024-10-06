@@ -12,8 +12,12 @@ export default function DateValueInput({
 }) {
   const [data, setData] = useState({
     date: "",
-    value: 0,
+    value: null,
   });
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   function formatDate(date) {
     if (!date) return;
@@ -28,10 +32,14 @@ export default function DateValueInput({
   }
 
   const onSubmit = () => {
-    handleClickDataUpdate(data);
+    if (data.value === null) {
+      alert("데이터 값을 입력해주세요.");
+    } else {
+      handleClickDataUpdate(data);
+    }
     setData({
       date: "",
-      value: 0,
+      value: null,
     });
   };
 
