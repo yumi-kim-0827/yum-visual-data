@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //components
 import { Calendar } from "primereact/calendar";
 import { InputNumber } from "primereact/inputnumber";
@@ -10,8 +10,10 @@ export default function DateValueInput({
   handleClickDataUpdate,
   handleClickDataDelete,
 }) {
-  const [date, setDate] = useState(null);
-  const [input, setInput] = useState(null);
+  const [data, setData] = useState({
+    date: "",
+    value: 0,
+  });
 
   function formatDate(date) {
     if (!date) return;
@@ -25,12 +27,13 @@ export default function DateValueInput({
     return `${YYYY}-${MM}-${dd}`;
   }
 
-  const onChange = (e) => {
-    setInput(e.value);
+  const onSubmit = () => {
+    handleClickDataUpdate(data);
+    setData({
+      date: "",
+      value: 0,
+    });
   };
-  console.log(input);
-
-  const onSubmit = () => {};
 
   const onDelete = () => {
     handleClickDataDelete();
@@ -44,14 +47,19 @@ export default function DateValueInput({
       </div>
       <div className="flex items-center gap-2">
         <Calendar
-          value={date}
-          onChange={(e) => setDate(e.value ? new Date(e.value) : null)}
+          value={data.date ? new Date(data.date) : null}
+          onChange={(e) => {
+            const formedDate = formatDate(e.value);
+            setData((prev) => ({ ...prev, date: formedDate }));
+          }}
         />
         <FloatLabel>
           <InputNumber
             inputId="integeronly"
-            value={input}
-            onChange={onChange}
+            value={data.value}
+            onChange={(e) => {
+              setData((prev) => ({ ...prev, value: e.value }));
+            }}
           />
           <label htmlFor="username">데이터값</label>
         </FloatLabel>

@@ -14,19 +14,10 @@ const SimpleLineChart = dynamic(
 
 export default function Home() {
   //전달 데이터
-  const [myData, setData] = useState([
-    {
-      date: "2024-09-29",
-      value: 13,
-    },
-    {
-      date: "2024-09-30",
-      value: 11,
-    },
-  ]);
+  const [myData, setData] = useState([]);
   //데이터 추가 핸들러
-  const handleClickDataUpdate = (input) => {
-    setData((prev) => [...prev, { ...input, value: parseInt(input.value) }]);
+  const handleClickDataUpdate = (data) => {
+    setData((prev) => [...prev, data]);
   };
   //마지막 데이터 삭제 핸들러
   const handleClickDataDelete = () => {
