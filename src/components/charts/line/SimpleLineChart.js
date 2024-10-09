@@ -9,8 +9,6 @@ const SimpleLineChart = ({ myData }) => {
     root._logo.dispose();
     root.setThemes([am5themes_Animated.new(root)]);
 
-    root.setThemes([am5themes_Animated.new(root)]);
-
     root.dateFormatter.setAll({
       dateFormat: "yyyy",
       dateFields: ["valueX"],

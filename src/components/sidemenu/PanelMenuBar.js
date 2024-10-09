@@ -7,7 +7,7 @@ export default function PanelMenuBar() {
   const router = useRouter();
   const items = [
     {
-      label: "그래프차트만들기",
+      label: "그래프만들기",
       icon: "pi pi-chart-line",
       items: [
         {
@@ -45,12 +45,13 @@ export default function PanelMenuBar() {
       ],
     },
     {
-      label: "Cloud",
+      label: "파이만들기",
       icon: "pi pi-cloud",
       items: [
         {
-          label: "Upload",
+          label: "파이 차트",
           icon: "pi pi-cloud-upload",
+          command: () => router.push("/create/pie/pieChart1"),
         },
         {
           label: "Download",
@@ -63,7 +64,7 @@ export default function PanelMenuBar() {
       ],
     },
     {
-      label: "Devices",
+      label: "지도만들기",
       icon: "pi pi-desktop",
       items: [
         {
