@@ -16,18 +16,7 @@ const SiplePieChart = ({ myData }) => {
 
     // 데이타 셋
     // Set data
-    let data = [
-      {
-        category: "데이터1",
-        value: 33,
-      },
-      {
-        category: "데이터2",
-        value: 11,
-      },
-    ];
-
-    console.log(data);
+    let data = myData;
 
     let chart = root.container.children.push(
       am5percent.PieChart.new(root, {

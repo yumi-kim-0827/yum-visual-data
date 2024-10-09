@@ -15,6 +15,8 @@ export default function BasicInput({
     value: 0,
   });
 
+  console.log(input);
+
   const onChange = (e) => {
     setInput({
       ...input,
@@ -49,7 +51,6 @@ export default function BasicInput({
       <div className="flex gap-2">
         <FloatLabel>
           <InputText
-            id="username"
             name="category"
             value={input.category}
             onChange={onChange}
@@ -57,12 +58,7 @@ export default function BasicInput({
           <label htmlFor="username">데이터명</label>
         </FloatLabel>
         <FloatLabel>
-          <InputText
-            id="username"
-            name="value"
-            value={input.value}
-            onChange={onChange}
-          />
+          <InputText name="value" value={input.value} onChange={onChange} />
           <label htmlFor="username">데이터값</label>
         </FloatLabel>
         <Button
