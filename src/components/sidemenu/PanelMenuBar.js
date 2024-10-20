@@ -38,7 +38,7 @@ export default function PanelMenuBar() {
             {
               label: "시간에 따른 선그래프",
               icon: "pi pi-pencil",
-              command: () => router.push("/create/line"),
+              command: () => router.push("/create/line/line1"),
             },
           ],
         },
@@ -46,20 +46,17 @@ export default function PanelMenuBar() {
     },
     {
       label: "파이만들기",
-      icon: "pi pi-cloud",
+      icon: "pi pi-chart-pie",
       items: [
         {
           label: "파이 차트",
-          icon: "pi pi-cloud-upload",
+          icon: "pi pi-pencil",
           command: () => router.push("/create/pie/pieChart1"),
         },
         {
-          label: "Download",
-          icon: "pi pi-cloud-download",
-        },
-        {
-          label: "Sync",
-          icon: "pi pi-refresh",
+          label: "그라데이션 파이 차트",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/pie/pieChart2"),
         },
       ],
     },
