@@ -62,7 +62,7 @@ export default function PanelMenuBar() {
     },
     {
       label: "지도만들기",
-      icon: "pi pi-desktop",
+      icon: "pi pi-globe",
       items: [
         {
           label: "Phone",
