@@ -5,8 +5,8 @@ import { Fieldset } from "primereact/fieldset";
 import BasicInput from "@/src/components/charts/input/BasicInput";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
-const GradientChart = dynamic(
-  () => import("@/src/components/charts/pie/GradientChart"),
+const SemiPieChart = dynamic(
+  () => import("@/src/components/charts/pie/SemiPieChart"),
   {
     ssr: false,
   }
@@ -33,7 +33,7 @@ export default function Home() {
         />
       </Fieldset>
       <Fieldset legend="그래프">
-        <GradientChart myData={myData} />
+        <SemiPieChart myData={myData} />
       </Fieldset>
     </main>
   );

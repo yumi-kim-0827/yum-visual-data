@@ -3,7 +3,7 @@ import * as am5 from "@amcharts/amcharts5/index";
 import * as am5percent from "@amcharts/amcharts5/percent";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-const SiplePieChart = ({ myData }) => {
+const SemiPieChart = ({ myData }) => {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
     root._logo.dispose();
@@ -15,20 +15,34 @@ const SiplePieChart = ({ myData }) => {
 
     let chart = root.container.children.push(
       am5percent.PieChart.new(root, {
-        endAngle: 270,
+        startAngle: 180,
+        endAngle: 360,
+        layout: root.verticalLayout,
+        innerRadius: am5.percent(50),
       })
     );
 
     let series = chart.series.push(
       am5percent.PieSeries.new(root, {
+        startAngle: 180,
+        endAngle: 360,
         valueField: "value",
         categoryField: "category",
-        endAngle: 270,
+        alignLabels: false,
       })
     );
 
     series.states.create("hidden", {
-      endAngle: -90,
+      startAngle: 180,
+      endAngle: 180,
+    });
+
+    series.slices.template.setAll({
+      cornerRadius: 5,
+    });
+
+    series.ticks.template.setAll({
+      forceHidden: true,
     });
 
     series.data.setAll(data);
@@ -42,4 +56,4 @@ const SiplePieChart = ({ myData }) => {
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 };
 
-export default SiplePieChart;
+export default SemiPieChart;
