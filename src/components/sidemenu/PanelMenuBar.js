@@ -70,8 +70,9 @@ export default function PanelMenuBar() {
       icon: "pi pi-globe",
       items: [
         {
-          label: "Phone",
-          icon: "pi pi-mobile",
+          label: "포인트 세계지도",
+          icon: "pi pi-map",
+          command: () => router.push("/create/map/mapClusterPoint"),
         },
         {
           label: "Desktop",
