@@ -34,6 +34,8 @@ export default function Home() {
       categoryName: `${categoryName2}`,
     },
   ]);
+  const data1propertyCount = Object.keys(myData[0]).length;
+  const data2propertyCount = Object.keys(myData[1]).length;
 
   useEffect(() => {
     setMyData([
@@ -44,12 +46,7 @@ export default function Home() {
         categoryName: `${categoryName2}`,
       },
     ]);
-    console.log(myData);
   }, [categoryName1, categoryName2]);
-
-  useEffect(() => {
-    console.log(myData);
-  }, [myData]);
 
   const handleAddFirstData = () => {
     setMyData((prev) => {
@@ -84,7 +81,6 @@ export default function Home() {
               value="비교할 두 항목 명을 다르게 입력하세요"
               className="mb-2"
             ></Badge>
-
             <div className="flex items-center gap-2">
               <FloatLabel>
                 <InputText
@@ -95,7 +91,7 @@ export default function Home() {
                     setCategoryName1(e.target.value);
                   }}
                 />
-                <label htmlFor="username">첫번째 항목 이름</label>
+                <label htmlFor="username">첫번째 비교군</label>
               </FloatLabel>
               <FloatLabel>
                 <InputText
@@ -106,7 +102,7 @@ export default function Home() {
                     setCategoryName2(e.target.value);
                   }}
                 />
-                <label htmlFor="username">두번째 항목 이름</label>
+                <label htmlFor="username">두번째 비교군</label>
               </FloatLabel>
             </div>
           </div>
@@ -117,7 +113,7 @@ export default function Home() {
         />
         <div className="flex gap-2 mb-4">
           <div className="flex-1">
-            <Badge value="첫번쨰 데이터 값" className="mb-2"></Badge>
+            <Badge value="첫번째 비교군의 데이터" className="mb-2"></Badge>
             <div className="flex items-center gap-2">
               <FloatLabel>
                 <InputText
@@ -153,7 +149,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex-1">
-            <Badge value="두번째 데이터 값" className="mb-2"></Badge>
+            <Badge value="두번째 비교군의 데이터" className="mb-2"></Badge>
             <div className="flex items-center gap-2">
               <FloatLabel>
                 <InputText
@@ -185,7 +181,14 @@ export default function Home() {
         </div>
       </Fieldset>
       <Fieldset legend="그래프">
-        <TwoCategoryStackedChart myData={myData} />
+        {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
+        {data1propertyCount > 1 && data2propertyCount > 1 ? (
+          <TwoCategoryStackedChart myData={myData} />
+        ) : (
+          <span className="block text-center text-stone-500">
+            <i className="pi pi-exclamation-circle"></i> 데이터를 추가해주세요
+          </span>
+        )}
       </Fieldset>
     </main>
   );
