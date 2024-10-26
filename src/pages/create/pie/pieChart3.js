@@ -33,7 +33,13 @@ export default function Home() {
         />
       </Fieldset>
       <Fieldset legend="그래프">
-        <SemiPieChart myData={myData} />
+        {myData.length > 0 ? (
+          <SemiPieChart myData={myData} />
+        ) : (
+          <span className="block text-center text-stone-500">
+            <i className="pi pi-exclamation-circle"></i> 데이터를 추가해주세요.
+          </span>
+        )}
       </Fieldset>
     </main>
   );

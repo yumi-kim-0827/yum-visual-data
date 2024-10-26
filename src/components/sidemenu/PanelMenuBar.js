@@ -7,7 +7,7 @@ export default function PanelMenuBar() {
   const router = useRouter();
   const items = [
     {
-      label: "그래프만들기",
+      label: "막대 및 라인 그래프만들기",
       icon: "pi pi-chart-line",
       items: [
         {

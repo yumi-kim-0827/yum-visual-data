@@ -33,7 +33,14 @@ export default function Home() {
         />
       </Fieldset>
       <Fieldset legend="그래프">
-        <SimpleLineChart myData={myData} />
+        {myData.length > 0 ? (
+          <SimpleLineChart myData={myData} />
+        ) : (
+          <span className="block text-center text-stone-500">
+            <i className="pi pi-exclamation-circle"></i> 데이터를 추가해주세요.
+            날짜는 1일씩 연속하여 차례대로 입력하셔야 합니다.
+          </span>
+        )}
       </Fieldset>
     </main>
   );
