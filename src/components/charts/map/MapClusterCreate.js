@@ -5,10 +5,10 @@ import * as am5map from "@amcharts/amcharts5/map"; // am5map import
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow"; // geodata import
 
-const MapClusterCreate = () => {
+const MapClusterCreate = ({ myData }) => {
   useLayoutEffect(() => {
     const root = am5.Root.new("chartdiv");
-
+    console.log("전달받음", myData);
     // Set themes
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -65,7 +65,7 @@ const MapClusterCreate = () => {
     });
 
     // Set data
-    const cities = [{ title: "Seoul", latitude: 37, longitude: 127 }];
+    const cities = myData;
 
     for (let i = 0; i < cities.length; i++) {
       const city = cities[i];
@@ -83,7 +83,7 @@ const MapClusterCreate = () => {
     return () => {
       root.dispose();
     };
-  }, []);
+  }, [myData]);
 
   return (
     <>
