@@ -48,30 +48,38 @@ export default function BasicInput({
         text="하나의 데이터명과 데이터값을 입력 후 추가할 수 있습니다."
         className="mb-4"
       />
-      <div className="flex gap-2">
-        <FloatLabel>
-          <InputText
-            name="category"
-            value={input.category}
-            onChange={onChange}
+      <div className="flex flex-col  gap-2">
+        <div className="flex gap-2 items-center">
+          <label className="w-1/3">데이터 명</label>
+          <FloatLabel>
+            <InputText
+              name="category"
+              value={input.category}
+              onChange={onChange}
+            />
+            <label htmlFor="username">데이터명</label>
+          </FloatLabel>
+        </div>
+        <div className="flex gap-2 items-center">
+          <label className="w-1/3">데이터 값 (숫자)</label>
+          <FloatLabel>
+            <InputText name="value" value={input.value} onChange={onChange} />
+            <label htmlFor="username">데이터값</label>
+          </FloatLabel>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            label="데이터 추가"
+            icon="pi pi-plus-circle"
+            onClick={onSubmit}
           />
-          <label htmlFor="username">데이터명</label>
-        </FloatLabel>
-        <FloatLabel>
-          <InputText name="value" value={input.value} onChange={onChange} />
-          <label htmlFor="username">데이터값</label>
-        </FloatLabel>
-        <Button
-          label="데이터 추가"
-          icon="pi pi-plus-circle"
-          onClick={onSubmit}
-        />
-        <Button
-          label="마지막 데이터 삭제"
-          severity="info"
-          icon="pi pi-trash"
-          onClick={onDelete}
-        />
+          <Button
+            label="마지막 데이터 삭제"
+            severity="info"
+            icon="pi pi-trash"
+            onClick={onDelete}
+          />
+        </div>
       </div>
     </>
   );
