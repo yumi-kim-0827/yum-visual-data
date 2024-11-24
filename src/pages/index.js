@@ -19,8 +19,8 @@ export default function Home() {
         <div className="flex items-center gap-4">
           <div className="w-1/3">
             <h2>
-              데이터를 그래프와 지도에서 시각적으로 확인하고, 더 나은 결정을
-              내려보세요.
+              로그인할 필요 없이 데이터를 그래프와 지도에서 시각적으로 확인하고,
+              더 나은 결정을 내려보세요.
             </h2>
             <p>
               간단히 데이터를 입력하고, 직관적인 그래프와 지도에서 그려냅니다.
@@ -35,16 +35,24 @@ export default function Home() {
             />
           </div>
           <div className="flex-1">
-            <div>
-              <GradientChart
-                myData={[
-                  { category: "영희", value: 14.3 },
-                  { category: "철수", value: 12.9 },
-                  { category: "유리", value: 21.01 },
-                  { category: "지연", value: 22 },
-                ]}
-              />
-            </div>
+            <GradientChart
+              myData={[
+                { category: "영희", value: 14.3 },
+                { category: "철수", value: 12.9 },
+                { category: "유리", value: 21.01 },
+                { category: "지연", value: 22 },
+              ]}
+            />
+          </div>
+        </div>
+        <div>
+          <h2>그래프 유형</h2>
+          <div>
+            <ul>
+              <li>
+                <div></div>
+              </li>
+            </ul>
           </div>
         </div>
       </Fieldset>
