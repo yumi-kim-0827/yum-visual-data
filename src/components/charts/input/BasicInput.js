@@ -49,7 +49,7 @@ export default function BasicInput({
         className="mb-4"
       />
       <div className="flex flex-col  gap-2">
-        <div className="flex gap-2 items-center">
+        <div className="mb-3 flex gap-2 items-center">
           <label className="w-1/3">데이터 명</label>
           <FloatLabel>
             <InputText
@@ -72,12 +72,14 @@ export default function BasicInput({
             label="데이터 추가"
             icon="pi pi-plus-circle"
             onClick={onSubmit}
+            className="flex-1"
           />
           <Button
             label="마지막 데이터 삭제"
             severity="info"
             icon="pi pi-trash"
             onClick={onDelete}
+            className="flex-1"
           />
         </div>
       </div>

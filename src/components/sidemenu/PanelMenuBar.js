@@ -59,7 +59,7 @@ export default function PanelMenuBar() {
           command: () => router.push("/create/pie/pieChart2"),
         },
         {
-          label: "하프 반형 파이 차트",
+          label: "하프 반형 파이 차트ddd",
           icon: "pi pi-pencil",
           command: () => router.push("/create/pie/pieChart3"),
         },

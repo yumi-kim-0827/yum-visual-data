@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   return (
     <PrimeReactProvider>
       <Header />
-      <div className="p-4 flex gap-2">
+      <div className="p-4 flex gap-2 h-[calc(100vh-87px)]">
         <PanelMenuBar />
         <Component {...pageProps} />
       </div>
