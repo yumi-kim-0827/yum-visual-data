@@ -48,8 +48,8 @@ export default function BasicInput({
         text="하나의 데이터명과 데이터값을 입력 후 추가할 수 있습니다."
         className="mb-4"
       />
-      <div className="flex flex-col  gap-2">
-        <div className="mb-3 flex gap-2 items-center">
+      <div className="flex flex-col gap-4">
+        <div className="mb-3 flex gap-2 items-center border border-red-800">
           <label className="w-1/3">데이터 명</label>
           <FloatLabel>
             <InputText
@@ -67,7 +67,7 @@ export default function BasicInput({
             <label htmlFor="username">데이터값</label>
           </FloatLabel>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-2">
           <Button
             label="데이터 추가"
             icon="pi pi-plus-circle"

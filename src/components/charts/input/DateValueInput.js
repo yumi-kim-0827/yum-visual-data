@@ -49,17 +49,19 @@ export default function DateValueInput({
 
   return (
     <>
-      <div className="flex gap-2">
-        <Message text="날짜별 데이터 수치를 입력합니다." className="mb-4" />
-        <Message text="날짜는 1일씩 연속해야합니다." className="mb-4" />
+      <div className="flex flex-col gap-2 mb-4">
+        <Message text="날짜별 데이터 수치를 입력합니다." />
+        <Message text="날짜는 1일씩 연속해야합니다." />
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col gap-2">
+        <label>일자 선택</label>
         <Calendar
           value={data.date ? new Date(data.date) : null}
           onChange={(e) => {
             const formedDate = formatDate(e.value);
             setData((prev) => ({ ...prev, date: formedDate }));
           }}
+          showIcon
         />
         <FloatLabel>
           <InputNumber
@@ -68,6 +70,7 @@ export default function DateValueInput({
             onChange={(e) => {
               setData((prev) => ({ ...prev, value: e.value }));
             }}
+            className="w-full"
           />
           <label htmlFor="username">데이터값</label>
         </FloatLabel>

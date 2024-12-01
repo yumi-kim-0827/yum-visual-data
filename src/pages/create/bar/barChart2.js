@@ -8,6 +8,7 @@ import { Badge } from "primereact/badge";
 import { FloatLabel } from "primereact/floatlabel";
 import { Button } from "primereact/button";
 import { Fieldset } from "primereact/fieldset";
+import { Divider } from "primereact/divider";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const TwoCategoryStackedChart = dynamic(
@@ -69,13 +70,13 @@ export default function Home() {
   };
 
   return (
-    <main className="flex-1 flex flex-col gap-2">
-      <Fieldset legend="데이터 추가하기">
+    <main className="flex-1 flex gap-2">
+      <Fieldset legend="데이터 추가하기" className="w-1/3">
         <Message
           text="2가지 데이터 종류에 각각 누적 데이터를 입력합니다."
-          className="mb-4"
+          className="mb-2"
         />
-        <div className="flex gap-2 mb-3">
+        <div className="flex gap-2 mb-4">
           <div>
             <Badge
               value="비교할 두 항목 명을 다르게 입력하세요"
@@ -107,15 +108,20 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <Divider />
         <Message
           text="각각의 항목에 들어갈 데이터 명과 순서는 동일해야합니다."
-          className="mb-4"
+          className="mb-2"
         />
-        <div className="flex gap-2 mb-4">
-          <div className="flex-1">
-            <Badge value="첫번째 비교군의 데이터" className="mb-2"></Badge>
-            <div className="flex items-center gap-2">
-              <FloatLabel>
+        <div className="flex flex-col gap-2 mb-4">
+          <div className="flex-1 flex flex-col items-start gap-2">
+            <Badge value="첫번째 비교군의 데이터"></Badge>
+            <div className="w-full flex items-center gap-2">
+              <FloatLabel
+                pt={{
+                  root: { style: { flex: "1" } },
+                }}
+              >
                 <InputText
                   id="username"
                   name="category"
@@ -123,10 +129,11 @@ export default function Home() {
                   onChange={(e) => {
                     setFirstDataKey(e.target.value);
                   }}
+                  className="w-full"
                 />
                 <label htmlFor="username">데이터 명</label>
               </FloatLabel>
-              <FloatLabel>
+              <FloatLabel pt={{ root: { style: { flex: "1" } } }}>
                 <InputNumber
                   id="username"
                   name="category"
@@ -134,53 +141,62 @@ export default function Home() {
                   onChange={(e) => {
                     setFirstDataValue(e.value);
                   }}
+                  className="w-full"
                 />
                 <label htmlFor="username">데이터값</label>
               </FloatLabel>
-              <Button
-                label="데이터 추가"
-                icon="pi pi-plus-circle"
-                onClick={handleAddFirstData}
-              />
             </div>
-            <div>
-              {firstDataKey}
-              {firstDataValue}
-            </div>
+            <Button
+              label="데이터 추가"
+              icon="pi pi-plus-circle"
+              onClick={handleAddFirstData}
+              className="w-full"
+            />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 flex flex-col items-start gap-2">
             <Badge value="두번째 비교군의 데이터" className="mb-2"></Badge>
-            <div className="flex items-center gap-2">
-              <FloatLabel>
+            <div className="w-full flex items-center gap-2">
+              <FloatLabel
+                pt={{
+                  root: { style: { flex: "1" } },
+                }}
+              >
                 <InputText
                   id="username"
                   value={secondDataKey}
                   onChange={(e) => {
                     setSecondDataKey(e.target.value);
                   }}
+                  className="w-full"
                 />
                 <label htmlFor="username">데이터 명</label>
               </FloatLabel>
-              <FloatLabel>
+              <FloatLabel
+                pt={{
+                  root: { style: { flex: "1" } },
+                }}
+              >
                 <InputNumber
                   id="username"
                   value={secondDataValue}
                   onChange={(e) => {
                     setSecondDataValue(e.value);
                   }}
+                  className="w-full"
                 />
                 <label htmlFor="username">데이터값</label>
               </FloatLabel>
-              <Button
-                label="데이터 추가"
-                icon="pi pi-plus-circle"
-                onClick={handleAddSecondData}
-              />
             </div>
+            <Button
+              label="데이터 추가"
+              icon="pi pi-plus-circle"
+              onClick={handleAddSecondData}
+              className="w-full"
+            />
           </div>
         </div>
       </Fieldset>
-      <Fieldset legend="그래프">
+      <Fieldset legend="그래프" className="w-2/3">
         {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
         {data1propertyCount > 1 && data2propertyCount > 1 ? (
           <TwoCategoryStackedChart myData={myData} />

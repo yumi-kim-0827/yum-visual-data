@@ -11,8 +11,8 @@ const MapLatLonInput = ({ handleClickDataUpdate, handleClickDataDelete }) => {
   //입력 데이터
   const [input, setInput] = useState({
     title: "",
-    latitude: 0,
-    longitude: 0,
+    latitude: null,
+    longitude: null,
   });
 
   console.log(input);
@@ -53,40 +53,52 @@ const MapLatLonInput = ({ handleClickDataUpdate, handleClickDataDelete }) => {
         text="하나의 데이터명과 데이터값을 입력 후 추가할 수 있습니다."
         className="mb-4"
       />
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-4">
         <FloatLabel>
-          <InputText name="title" value={input.title} onChange={onChange} />
-          <label htmlFor="username">나라 및 지역명</label>
+          <InputText
+            id="location-name"
+            name="title"
+            value={input.title}
+            onChange={onChange}
+            className="w-full"
+          />
+          <label htmlFor="location-name">나라 및 지역명</label>
         </FloatLabel>
         <FloatLabel>
           <InputText
+            id="latitude"
             name="latitude"
             value={input.latitude}
             type="number"
             onChange={onChange}
+            className="w-full"
           />
           <label htmlFor="latitude">위도 latitude값</label>
         </FloatLabel>
         <FloatLabel>
           <InputText
+            id="longitude"
             name="longitude"
             value={input.longitude}
             type="number"
             onChange={onChange}
+            className="w-full"
           />
-          <label htmlFor="username">경도 longitude값</label>
+          <label htmlFor="userlongitudename">경도 longitude값</label>
         </FloatLabel>
-        <Button
-          label="데이터 추가"
-          icon="pi pi-plus-circle"
-          onClick={onSubmit}
-        />
-        <Button
-          label="마지막 데이터 삭제"
-          severity="info"
-          icon="pi pi-trash"
-          onClick={onDelete}
-        />
+        <div className="flex flex-col gap-2">
+          <Button
+            label="데이터 추가"
+            icon="pi pi-plus-circle"
+            onClick={onSubmit}
+          />
+          <Button
+            label="마지막 데이터 삭제"
+            severity="info"
+            icon="pi pi-trash"
+            onClick={onDelete}
+          />
+        </div>
       </div>
     </>
   );
