@@ -1,8 +1,10 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 //components
 import { Fieldset } from "primereact/fieldset";
 import { Button } from "primereact/button";
+import { Card } from "primereact/card";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const GradientChart = dynamic(
@@ -16,7 +18,7 @@ export default function Home() {
   return (
     <main className="w-full">
       <Fieldset legend="인포그래픽 만들기" className="w-full">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-between">
           <div className="w-1/3">
             <h2>
               로그인할 필요 없이 데이터를 그래프와 지도에서 시각적으로 확인하고,
@@ -45,14 +47,95 @@ export default function Home() {
             />
           </div>
         </div>
-        <div>
-          <h2>그래프 유형</h2>
+        <div className="my-8">
+          <h2 className="text-center">그래프 유형</h2>
+          <p className="text-center">
+            그래프는 데이터를 시각적으로 표현하여 분석하고 통찰을 얻을 수 있도록
+            도와주는 도구입니다. 그래프의 유형은 데이터의 특성이나 분석 목적에
+            따라 다양하게 나눌 수 있습니다.
+          </p>
           <div>
-            <ul>
+            <ul className="grid grid-cols-4 gap-2">
               <li>
-                <div></div>
+                <Card title="선 그래프 (Line Chart)">
+                  <Image
+                    src="/images/img_graph1.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={300} // 이미지의 높이
+                    layout="responsive"
+                  />
+                  <strong className="block text-lg">
+                    시간에 따른 변화나 추세를 시각화할 때 사용합니다.
+                  </strong>
+                  <p>
+                    특징: 데이터를 점으로 표시하고, 이 점들을 선으로 연결하여
+                    변화의 흐름을 보여줍니다.
+                  </p>
+                  <span className="text-sm">주식 가격 변화, 기온 변화</span>
+                </Card>
+              </li>
+              <li>
+                <Card title="막대 그래프 (Bar Chart)">
+                  <Image
+                    src="/images/img_graph2.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={300} // 이미지의 높이
+                    layout="responsive"
+                  />
+                  <strong className="block text-lg">
+                    카테고리별로 값을 비교할 때 사용합니다.
+                  </strong>
+                  <p>
+                    특징: 막대의 길이로 각 카테고리의 크기를 비교할 수 있습니다.
+                    수평막대그래프나 수직막대그래프가 있습니다.
+                  </p>
+                  <span className="text-sm">각 국가별 인구수, 연도별 매출</span>
+                </Card>
+              </li>
+              <li>
+                <Card title="지도 그래프 (Map Chart)">
+                  <Image
+                    src="/images/img_graph3.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={300} // 이미지의 높이
+                    layout="responsive"
+                  />
+                  <strong className="block text-lg">
+                    지리적 데이터를 시각화할 때 사용합니다.
+                  </strong>
+                  <p>
+                    특징: 지도 위에 데이터를 표시하여 지역별 정보를 시각적으로
+                    보여줍니다.
+                  </p>
+                  <span className="text-sm">국가별 인구, 매출 분포</span>
+                </Card>
+              </li>
+              <li>
+                <Card title="원 그래프 (Pie Chart)">
+                  <Image
+                    src="/images/img_graph4.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={300} // 이미지의 높이
+                    layout="responsive"
+                  />
+                  <strong className="block text-lg">
+                    전체에 대한 각 항목의 비율을 보여줄 때 사용합니다.
+                  </strong>
+                  <p>
+                    특징: 각 부분의 크기로 비율을 나타내며, 원 형태로 데이터가
+                    분할됩니다.
+                  </p>
+                  <span className="text-sm">시장 점유율, 예산 배분</span>
+                </Card>
               </li>
             </ul>
+          </div>
+          <div className="flex items-center justify-between">
+            <h2>이 사이트에서 그래프를 시각화 하는 방법</h2>
           </div>
         </div>
       </Fieldset>
