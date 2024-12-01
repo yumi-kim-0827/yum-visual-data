@@ -75,8 +75,9 @@ export default function PanelMenuBar() {
           command: () => router.push("/create/map/mapClusterPoint"),
         },
         {
-          label: "Desktop",
-          icon: "pi pi-desktop",
+          label: "범위 세계지도",
+          icon: "pi pi-map",
+          command: () => router.push("/create/map/mapRangePoint"),
         },
         {
           label: "Tablet",

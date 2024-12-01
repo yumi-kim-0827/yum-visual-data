@@ -8,7 +8,7 @@ import * as am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow"; // 
 const MapClusterCreate = ({ myData }) => {
   useLayoutEffect(() => {
     const root = am5.Root.new("chartdiv");
-    console.log("전달받음", myData);
+
     // Set themes
     root.setThemes([am5themes_Animated.new(root)]);
 
