@@ -1,4 +1,4 @@
-const nation_iso = [
+const nationIsoList = [
   { name: "Afghanistan", id: "AF", korean: "아프가니스탄" },
   { name: "Albania", id: "AL", korean: "알바니아" },
   { name: "Algeria", id: "DZ", korean: "알제리" },
@@ -45,3 +45,5 @@ const nation_iso = [
   { name: "United States", id: "US", korean: "미국" },
   { name: "Vietnam", id: "VN", korean: "베트남" },
 ];
+
+export default nationIsoList;

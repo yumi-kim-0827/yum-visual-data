@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 //components
 import { Fieldset } from "primereact/fieldset";
-import MapLatLonInput from "@/src/components/charts/input/MapLatLonInput";
+import MapSelectCoutry from "@/src/components/charts/input/MapSelectCoutry";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const MapRangeCreate = dynamic(
@@ -27,10 +27,7 @@ export default function Home() {
   return (
     <main className="flex-1 flex gap-2">
       <Fieldset legend="데이터 추가하기" className="w-1/3">
-        <MapLatLonInput
-          handleClickDataUpdate={handleClickDataUpdate}
-          handleClickDataDelete={handleClickDataDelete}
-        />
+        <MapSelectCoutry />
       </Fieldset>
       <Fieldset legend="그래프" className="w-2/3">
         <MapRangeCreate myData={myData} />
