@@ -71,7 +71,10 @@ export default function Home() {
 
   return (
     <main className="flex-1 flex gap-2">
-      <Fieldset legend="데이터 추가하기" className="w-1/3">
+      <Fieldset
+        legend="데이터 추가하기"
+        className="w-1/3  h-full overflow-y-auto"
+      >
         <Message
           text="2가지 데이터 종류에 각각 누적 데이터를 입력합니다."
           className="mb-2"
@@ -196,7 +199,7 @@ export default function Home() {
           </div>
         </div>
       </Fieldset>
-      <Fieldset legend="그래프" className="w-2/3">
+      <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
         {data1propertyCount > 1 && data2propertyCount > 1 ? (
           <TwoCategoryStackedChart myData={myData} />

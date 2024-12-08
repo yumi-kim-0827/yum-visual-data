@@ -26,13 +26,16 @@ export default function Home() {
 
   return (
     <main className="flex-1 flex gap-2">
-      <Fieldset legend="데이터 추가하기" className="w-1/3">
+      <Fieldset
+        legend="데이터 추가하기"
+        className="w-1/3 h-full overflow-y-auto"
+      >
         <BasicInput
           handleClickDataUpdate={handleClickDataUpdate}
           handleClickDataDelete={handleClickDataDelete}
         />
       </Fieldset>
-      <Fieldset legend="그래프" className="w-2/3">
+      <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         {myData.length > 0 ? (
           <SemiPieChart myData={myData} />
         ) : (

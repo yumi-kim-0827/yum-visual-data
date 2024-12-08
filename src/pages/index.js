@@ -21,7 +21,10 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      <Fieldset legend="인포그래픽 만들기" className="w-full">
+      <Fieldset
+        legend="인포그래픽 만들기"
+        className="w-full h-full overflow-y-auto"
+      >
         <div className="flex items-center justify-between">
           <div className="w-1/3">
             <h2>
