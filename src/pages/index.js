@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 //components
 import { Fieldset } from "primereact/fieldset";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
+import { Stepper } from "primereact/stepper";
+import { StepperPanel } from "primereact/stepperpanel";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const GradientChart = dynamic(
@@ -15,6 +17,8 @@ const GradientChart = dynamic(
 );
 
 export default function Home() {
+  const stepperRef = useRef(null);
+
   return (
     <main className="w-full">
       <Fieldset legend="인포그래픽 만들기" className="w-full">
@@ -47,7 +51,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="my-8">
+        <div className="my-40">
           <h2 className="text-center">그래프 유형</h2>
           <p className="text-center">
             그래프는 데이터를 시각적으로 표현하여 분석하고 통찰을 얻을 수 있도록
@@ -55,9 +59,9 @@ export default function Home() {
             따라 다양하게 나눌 수 있습니다.
           </p>
           <div>
-            <ul className="grid grid-cols-4 gap-2">
+            <ul className="grid grid-cols-4 items-stretch gap-2">
               <li>
-                <Card title="선 그래프 (Line Chart)">
+                <Card title="선 그래프 (Line Chart)" className="h-full">
                   <Image
                     src="/images/img_graph1.png" // public 폴더 내 경로
                     alt="My Image"
@@ -76,7 +80,7 @@ export default function Home() {
                 </Card>
               </li>
               <li>
-                <Card title="막대 그래프 (Bar Chart)">
+                <Card title="막대 그래프 (Bar Chart)" className="h-full">
                   <Image
                     src="/images/img_graph2.png" // public 폴더 내 경로
                     alt="My Image"
@@ -95,7 +99,7 @@ export default function Home() {
                 </Card>
               </li>
               <li>
-                <Card title="지도 그래프 (Map Chart)">
+                <Card title="지도 그래프 (Map Chart)" className="h-full">
                   <Image
                     src="/images/img_graph3.png" // public 폴더 내 경로
                     alt="My Image"
@@ -114,7 +118,7 @@ export default function Home() {
                 </Card>
               </li>
               <li>
-                <Card title="원 그래프 (Pie Chart)">
+                <Card title="원 그래프 (Pie Chart)" className="h-full">
                   <Image
                     src="/images/img_graph4.png" // public 폴더 내 경로
                     alt="My Image"
@@ -134,9 +138,104 @@ export default function Home() {
               </li>
             </ul>
           </div>
-          <div className="flex items-center justify-between">
-            <h2>이 사이트에서 그래프를 시각화 하는 방법</h2>
-          </div>
+        </div>
+        <div>
+          <h2>이 사이트에서 그래프를 시각화 하는 방법</h2>
+          <Stepper ref={stepperRef}>
+            <StepperPanel header="데이터 입력">
+              <div className="p-2 flex gap-4 items-center border-1 border-blue-400 rounded-md  overflow-hidden">
+                <div className="w-1/3">
+                  <Image
+                    src="/images/howto1.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={2} // 이미지의 높이
+                    layout="responsive"
+                  />
+                </div>
+                <div className="flex-1">
+                  <strong className="block text-lg">데이터 입력</strong>
+                  <p>
+                    차트를 만들 때 필요한, 데이터명과 데이트 값을 입력합니다.
+                  </p>
+                  <p>
+                    여러개의 데이트를 입력할 시, 데이터 한번 입력한 후 데이터
+                    추가를 누르고 다음 데이터를 입력합니다.
+                  </p>
+                  <Button
+                    label="Next"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    onClick={() => stepperRef.current.nextCallback()}
+                  />
+                </div>
+              </div>
+            </StepperPanel>
+            <StepperPanel header="그래프 생성">
+              <div className="p-2 flex gap-4 items-center border-1 border-blue-400 rounded-md  overflow-hidden">
+                <div className="w-1/3">
+                  <Image
+                    src="/images/howto2.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={2} // 이미지의 높이
+                    layout="responsive"
+                  />
+                </div>
+                <div className="flex-1">
+                  <strong className="block text-lg">그래프 생성</strong>
+                  <p>
+                    차례대로 입력한 [데이터-값] 순서대로 차트가 만들어집니다.
+                  </p>
+                  <p>
+                    여러개의 데이트를 입력할 시, 데이터 명과 해당 값을 입력한
+                    순서대로 차트가 만들어집니다.
+                  </p>
+                  <div className="flex gap-2">
+                    <Button
+                      label="Back"
+                      severity="secondary"
+                      icon="pi pi-arrow-left"
+                      onClick={() => stepperRef.current.prevCallback()}
+                    />
+                    <Button
+                      label="Next"
+                      icon="pi pi-arrow-right"
+                      iconPos="right"
+                      onClick={() => stepperRef.current.nextCallback()}
+                    />
+                  </div>
+                </div>
+              </div>
+            </StepperPanel>
+            <StepperPanel header="데이터 삭제">
+              <div className="p-2 flex gap-4 items-center border-1 border-blue-400 rounded-md  overflow-hidden">
+                <div className="w-1/3">
+                  <Image
+                    src="/images/howto3.png" // public 폴더 내 경로
+                    alt="My Image"
+                    width={300} // 이미지의 너비
+                    height={2} // 이미지의 높이
+                    layout="responsive"
+                  />
+                </div>
+                <div className="flex-1">
+                  <strong className="block text-lg">데이터 삭제</strong>
+                  <p>마지막 데이터를 삭제할 수 있습니다.</p>
+                  <p>
+                    마지막 데이터 삭제 버튼을 누르면 가장 최신의 데이터를
+                    삭제해서 차트를 수정할 수 있습니다.
+                  </p>
+                  <Button
+                    label="Back"
+                    severity="secondary"
+                    icon="pi pi-arrow-left"
+                    onClick={() => stepperRef.current.prevCallback()}
+                  />
+                </div>
+              </div>
+            </StepperPanel>
+          </Stepper>
         </div>
       </Fieldset>
     </main>
