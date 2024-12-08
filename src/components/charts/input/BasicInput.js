@@ -51,19 +51,25 @@ export default function BasicInput({
       <div className="flex flex-col gap-4">
         <div className="mb-3 flex gap-2 items-center border border-red-800">
           <label className="w-1/3">데이터 명</label>
-          <FloatLabel>
+          <FloatLabel pt={{ root: { style: { flex: "1" } } }}>
             <InputText
               name="category"
               value={input.category}
               onChange={onChange}
+              className="w-full"
             />
             <label htmlFor="username">데이터명</label>
           </FloatLabel>
         </div>
         <div className="flex gap-2 items-center">
           <label className="w-1/3">데이터 값 (숫자)</label>
-          <FloatLabel>
-            <InputText name="value" value={input.value} onChange={onChange} />
+          <FloatLabel pt={{ root: { style: { flex: "1" } } }}>
+            <InputText
+              name="value"
+              value={input.value}
+              onChange={onChange}
+              className="w-full"
+            />
             <label htmlFor="username">데이터값</label>
           </FloatLabel>
         </div>
