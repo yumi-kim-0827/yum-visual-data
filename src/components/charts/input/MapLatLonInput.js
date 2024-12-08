@@ -50,7 +50,7 @@ const MapLatLonInput = ({ handleClickDataUpdate, handleClickDataDelete }) => {
   return (
     <>
       <Message
-        text="하나의 데이터명과 데이터값을 입력 후 추가할 수 있습니다."
+        text="나라및 지역 명과 그에 맞는 위도와 경도 숫자값을 추가하세요."
         className="mb-4"
       />
       <div className="flex flex-col gap-4">

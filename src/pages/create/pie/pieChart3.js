@@ -39,9 +39,57 @@ export default function Home() {
         {myData.length > 0 ? (
           <SemiPieChart myData={myData} />
         ) : (
-          <span className="block text-center text-stone-500">
-            <i className="pi pi-exclamation-circle"></i> 데이터를 추가해주세요.
-          </span>
+          <div className="block text-stone-500">
+            <div className="pt-2 px-4 pb-4 bg-gray-50 rounded-lg">
+              <h2 className="p-0 text-base text-zinc-600">
+                데이터 시각화 생성 예시
+              </h2>
+              <div className="p-2 border-1 border-blue-400 bg-white">
+                <table
+                  aria-labelledby="sample-data"
+                  className="w-full text-left text-zinc-500 text-sm"
+                >
+                  <caption id="sample-data table-caption" className="hidden">
+                    예시 표: 데이터 입력시 인포그래픽 차트 데이터 시각화
+                    생성하기
+                  </caption>
+                  <thead className="border-1">
+                    <tr className="border-b-1 border-blue-400">
+                      <th scope="col" className="w-1/4">
+                        순서
+                      </th>
+                      <th scope="col">데이터 명</th>
+                      <th scope="col">값</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">첫번째 데이터</th>
+                      <td>피카츄</td>
+                      <td>30</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">두번째 데이터</th>
+                      <td>이브이</td>
+                      <td>70</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <SemiPieChart
+              myData={[
+                {
+                  category: "피카츄",
+                  value: 30,
+                },
+                {
+                  category: "이브이",
+                  value: 70,
+                },
+              ]}
+            />
+          </div>
         )}
       </Fieldset>
     </main>

@@ -3,7 +3,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-const SimpleLineChart = ({ myData }) => {
+const SimpleLineDateChart = ({ myData }) => {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
     root._logo.dispose();
@@ -122,4 +122,4 @@ const SimpleLineChart = ({ myData }) => {
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 };
 
-export default SimpleLineChart;
+export default SimpleLineDateChart;

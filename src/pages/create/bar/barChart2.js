@@ -68,7 +68,7 @@ export default function Home() {
     setSecondDataKey("");
     setSecondDataValue(null);
   };
-
+  console.log(myData);
   return (
     <main className="flex-1 flex gap-2">
       <Fieldset
@@ -204,9 +204,62 @@ export default function Home() {
         {data1propertyCount > 1 && data2propertyCount > 1 ? (
           <TwoCategoryStackedChart myData={myData} />
         ) : (
-          <span className="block text-center text-stone-500">
-            <i className="pi pi-exclamation-circle"></i> 데이터를 추가해주세요
-          </span>
+          <div className="block text-stone-500">
+            <div className="pt-2 px-4 pb-4 bg-gray-50 rounded-lg">
+              <h2 className="p-0 text-base text-zinc-600">
+                데이터 시각화 생성 예시
+              </h2>
+              <div className="p-2 border-1 border-blue-400 bg-white">
+                <table
+                  aria-labelledby="sample-data"
+                  className="w-full text-left text-zinc-500 text-sm"
+                >
+                  <caption id="sample-data table-caption" className="hidden">
+                    예시 표: 데이터 입력시 인포그래픽 차트 데이터 시각화
+                    생성하기
+                  </caption>
+                  <thead className="border-1">
+                    <tr className="border-b-1 border-blue-400">
+                      <th scope="col" className="w-1/4">
+                        데이터
+                      </th>
+                      <th scope="col">비교군 이름</th>
+                      <th scope="col">데이터 명 (같아야함)과 값</th>
+                      <th scope="col">값</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">첫번째 비교군</th>
+                      <td>피카츄</td>
+                      <td>파워 : 13</td>
+                      <td>높이뛰기 : 50</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">두번째 비교군</th>
+                      <td>이브이</td>
+                      <td>파워 : 56</td>
+                      <td>높이뛰기 : 19</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <TwoCategoryStackedChart
+              myData={[
+                {
+                  categoryName: "피카츄",
+                  파워: 13,
+                  높이뛰기: 50,
+                },
+                {
+                  categoryName: "이브이",
+                  파워: 56,
+                  높이뛰기: 19,
+                },
+              ]}
+            />
+          </div>
         )}
       </Fieldset>
     </main>
