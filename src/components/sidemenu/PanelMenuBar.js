@@ -7,40 +7,34 @@ export default function PanelMenuBar() {
   const router = useRouter();
   const items = [
     {
-      label: "막대 및 라인 그래프만들기",
+      label: "막대 그래프만들기",
       icon: "pi pi-chart-line",
       items: [
         {
-          label: "막대그래프 만들기",
-          icon: "pi pi-chart-bar",
-          items: [
-            {
-              label: "심플 원칼라 막대그래프",
-              icon: "pi pi-pencil",
-              command: () => router.push("/create/bar"),
-            },
-            {
-              label: "수직 라벨 막대그래프",
-              icon: "pi pi-pencil",
-              command: () => router.push("/create/bar/barChart1"),
-            },
-            {
-              label: "두 항목 비율 비교 그래프",
-              icon: "pi pi-pencil",
-              command: () => router.push("/create/bar/barChart2"),
-            },
-          ],
+          label: "심플 원칼라 막대그래프",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/bar"),
         },
         {
-          label: "라인그래프 만들기",
-          icon: "pi pi-chart-line",
-          items: [
-            {
-              label: "시간에 따른 선그래프",
-              icon: "pi pi-pencil",
-              command: () => router.push("/create/line/line1"),
-            },
-          ],
+          label: "수직 라벨 막대그래프",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/bar/barChart1"),
+        },
+        {
+          label: "두 항목 비율 비교 그래프",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/bar/barChart2"),
+        },
+      ],
+    },
+    {
+      label: "선 그래프만들기",
+      icon: "pi pi-chart-line",
+      items: [
+        {
+          label: "시간에 따른 선그래프",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/line/line1"),
         },
       ],
     },
@@ -59,7 +53,7 @@ export default function PanelMenuBar() {
           command: () => router.push("/create/pie/pieChart2"),
         },
         {
-          label: "하프 반형 파이 차트ddd",
+          label: "하프 반형 파이 차트",
           icon: "pi pi-pencil",
           command: () => router.push("/create/pie/pieChart3"),
         },
