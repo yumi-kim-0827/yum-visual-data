@@ -8,7 +8,7 @@ import * as am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow"; // 
 const MapClusterCreate = ({ myData }) => {
   useLayoutEffect(() => {
     const root = am5.Root.new("chartdiv");
-
+    root._logo.dispose();
     // Set themes
     root.setThemes([am5themes_Animated.new(root)]);
 
@@ -24,7 +24,7 @@ const MapClusterCreate = ({ myData }) => {
       "zoomControl",
       am5map.ZoomControl.new(root, {})
     );
-    zoomControl.homeButton.set("visible", true);
+    zoomControl.homeButton.set("visible", false);
 
     const polygonSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
