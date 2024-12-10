@@ -10,15 +10,19 @@ import { InputIcon } from "primereact/inputicon";
 import { Menubar } from "primereact/menubar";
 
 export default function Header() {
+  const router = useRouter();
+
   //메뉴 구성
   const manubarItems = [
     {
       label: "홈",
       icon: "pi pi-home",
+      command: () => router.push("/"),
     },
     {
       label: "사용 설명",
       icon: "pi pi-home",
+      command: () => router.push("/"),
     },
     {
       label: "궁금해요",
@@ -27,14 +31,17 @@ export default function Header() {
         {
           label: "인포그래픽이란?",
           icon: "pi pi-server",
+          command: () => router.push("/insight/infographicInfo"),
         },
         {
           label: "차트의 종류",
           icon: "pi pi-bolt",
+          command: () => router.push("/insight/chartInfo"),
         },
         {
           label: "데이터의 종류",
           icon: "pi pi-server",
+          command: () => router.push("/insight/dataInfo"),
         },
       ],
     },
