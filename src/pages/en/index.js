@@ -22,21 +22,21 @@ export default function Home() {
   return (
     <main className="w-full">
       <Fieldset
-        legend="인포그래픽 만들기"
+        legend="Create Infographics"
         className="w-full h-full overflow-y-auto"
       >
         <div className="flex items-center justify-between">
           <div className="w-1/3">
-            <h2 className="text-5xl ">
-              로그인할 필요 없이 데이터를 그래프와 지도에서 시각적으로 확인하고,
-              더 나은 결정을 내려보세요.
+            <h2 className="text-5xl">
+              Visualize data on graphs and maps without the need to log in, and
+              make better decisions.
             </h2>
             <p className="text-2xl">
-              간단히 데이터를 입력하고, 직관적인 그래프와 지도에서 그려냅니다.
-              시각화된 인포그래픽을 활용하세요.
+              Simply input your data and see it rendered on intuitive graphs and
+              maps. Leverage visualized infographics to your advantage.
             </p>
             <Button
-              label="그래프 만들러가기"
+              label="Generate Graphs"
               icon="pi pi-arrow-right"
               iconPos="right"
               size="small"
@@ -46,25 +46,26 @@ export default function Home() {
           <div className="flex-1">
             <GradientChart
               myData={[
-                { category: "영희", value: 14.3 },
-                { category: "철수", value: 12.9 },
-                { category: "유리", value: 21.01 },
-                { category: "지연", value: 22 },
+                { category: "John", value: 14.3 },
+                { category: "Sarah", value: 12.9 },
+                { category: "Emily", value: 21.01 },
+                { category: "Michael", value: 22 },
               ]}
             />
           </div>
         </div>
         <div className="my-40">
-          <h2 className="text-center">그래프 유형</h2>
+          <h2 className="text-center">Graph Types</h2>
           <p className="text-center">
-            그래프는 데이터를 시각적으로 표현하여 분석하고 통찰을 얻을 수 있도록
-            도와주는 도구입니다. 그래프의 유형은 데이터의 특성이나 분석 목적에
-            따라 다양하게 나눌 수 있습니다.
+            Graphs are powerful tools for visually representing data, helping
+            you analyze and gain insights. The type of graph you choose can vary
+            depending on the nature of the data and the purpose of your
+            analysis.
           </p>
           <div>
             <ul className="grid grid-cols-4 items-stretch gap-2">
               <li>
-                <Card title="선 그래프 (Line Chart)" className="h-full">
+                <Card title="(Line Chart)" className="h-full">
                   <Image
                     src="/images/img_graph1.png" // public 폴더 내 경로
                     alt="My Image"
@@ -73,17 +74,19 @@ export default function Home() {
                     layout="responsive"
                   />
                   <strong className="block text-lg">
-                    시간에 따른 변화나 추세를 시각화할 때 사용합니다.
+                    Used to visualize changes or trends over time.
                   </strong>
                   <p>
-                    특징: 데이터를 점으로 표시하고, 이 점들을 선으로 연결하여
-                    변화의 흐름을 보여줍니다.
+                    Features: Data points are plotted and connected with lines
+                    to show the flow of changes.
                   </p>
-                  <span className="text-sm">주식 가격 변화, 기온 변화</span>
+                  <span className="text-sm">
+                    Examples: Stock price changes, temperature fluctuations
+                  </span>
                 </Card>
               </li>
               <li>
-                <Card title="막대 그래프 (Bar Chart)" className="h-full">
+                <Card title="(Bar Chart)" className="h-full">
                   <Image
                     src="/images/img_graph2.png" // public 폴더 내 경로
                     alt="My Image"
@@ -92,17 +95,19 @@ export default function Home() {
                     layout="responsive"
                   />
                   <strong className="block text-lg">
-                    카테고리별로 값을 비교할 때 사용합니다.
+                    Used to compare values across categories.
                   </strong>
                   <p>
-                    특징: 막대의 길이로 각 카테고리의 크기를 비교할 수 있습니다.
-                    수평막대그래프나 수직막대그래프가 있습니다.
+                    Features: The length of the bars represents the size of each
+                    category. Includes horizontal and vertical bar charts.
                   </p>
-                  <span className="text-sm">각 국가별 인구수, 연도별 매출</span>
+                  <span className="text-sm">
+                    Examples: Population by country, revenue by year
+                  </span>
                 </Card>
               </li>
               <li>
-                <Card title="지도 그래프 (Map Chart)" className="h-full">
+                <Card title="(Map Chart)" className="h-full">
                   <Image
                     src="/images/img_graph3.png" // public 폴더 내 경로
                     alt="My Image"
@@ -111,17 +116,19 @@ export default function Home() {
                     layout="responsive"
                   />
                   <strong className="block text-lg">
-                    지리적 데이터를 시각화할 때 사용합니다.
+                    Used to visualize geographical data.
                   </strong>
                   <p>
-                    특징: 지도 위에 데이터를 표시하여 지역별 정보를 시각적으로
-                    보여줍니다.
+                    Features: Displays data on a map to provide a visual
+                    representation of regional information.
                   </p>
-                  <span className="text-sm">국가별 인구, 매출 분포</span>
+                  <span className="text-sm">
+                    Examples: Population by country, sales distribution
+                  </span>
                 </Card>
               </li>
               <li>
-                <Card title="원 그래프 (Pie Chart)" className="h-full">
+                <Card title="(Pie Chart)" className="h-full">
                   <Image
                     src="/images/img_graph4.png" // public 폴더 내 경로
                     alt="My Image"
@@ -130,22 +137,25 @@ export default function Home() {
                     layout="responsive"
                   />
                   <strong className="block text-lg">
-                    전체에 대한 각 항목의 비율을 보여줄 때 사용합니다.
+                    Used to show the proportion of each item relative to the
+                    whole.
                   </strong>
                   <p>
-                    특징: 각 부분의 크기로 비율을 나타내며, 원 형태로 데이터가
-                    분할됩니다.
+                    Features: Represents proportions with segment sizes in a
+                    circular chart.
                   </p>
-                  <span className="text-sm">시장 점유율, 예산 배분</span>
+                  <span className="text-sm">
+                    Examples: Market share, budget allocation
+                  </span>
                 </Card>
               </li>
             </ul>
           </div>
         </div>
         <div>
-          <h2>이 사이트에서 그래프를 시각화 하는 방법</h2>
+          <h2>How to Visualize Graphs on This Site</h2>
           <Stepper ref={stepperRef}>
-            <StepperPanel header="데이터 입력">
+            <StepperPanel header="Input Data">
               <div className="p-2 flex gap-4 items-center border-1 border-blue-400 rounded-md  overflow-hidden">
                 <div className="w-1/3">
                   <Image
@@ -157,13 +167,14 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex-1">
-                  <strong className="block text-lg">데이터 입력</strong>
+                  <strong className="block text-lg">Input Data</strong>
                   <p>
-                    차트를 만들 때 필요한, 데이터명과 데이트 값을 입력합니다.
+                    Enter the dataset name and corresponding values required to
+                    create the chart.
                   </p>
                   <p>
-                    여러개의 데이트를 입력할 시, 데이터 한번 입력한 후 데이터
-                    추가를 누르고 다음 데이터를 입력합니다.
+                    When inputting multiple datasets, add one dataset, click
+                    &#40;Add Data,&#41; and then input the next dataset.
                   </p>
                   <Button
                     label="Next"
@@ -174,7 +185,7 @@ export default function Home() {
                 </div>
               </div>
             </StepperPanel>
-            <StepperPanel header="그래프 생성">
+            <StepperPanel header="Generate Graph">
               <div className="p-2 flex gap-4 items-center border-1 border-blue-400 rounded-md  overflow-hidden">
                 <div className="w-1/3">
                   <Image
@@ -186,14 +197,15 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex-1">
-                  <strong className="block text-lg">그래프 생성</strong>
+                  <strong className="block text-lg">Generate Graph</strong>
                   <p>
-                    차례대로 입력한 &#40;데이터-값&#41; 순서대로 차트가
-                    만들어집니다.
+                    The chart will be created in the order of the inputted
+                    [Dataset - Value] pairs.
                   </p>
                   <p>
-                    여러개의 데이트를 입력할 시, 데이터 명과 해당 값을 입력한
-                    순서대로 차트가 만들어집니다.
+                    When inputting multiple datasets, the chart will be
+                    generated based on the sequence of dataset names and their
+                    respective values.
                   </p>
                   <div className="flex gap-2">
                     <Button
@@ -212,7 +224,7 @@ export default function Home() {
                 </div>
               </div>
             </StepperPanel>
-            <StepperPanel header="데이터 삭제">
+            <StepperPanel header="Delete Data">
               <div className="p-2 flex gap-4 items-center border-1 border-blue-400 rounded-md  overflow-hidden">
                 <div className="w-1/3">
                   <Image
@@ -224,11 +236,12 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex-1">
-                  <strong className="block text-lg">데이터 삭제</strong>
-                  <p>마지막 데이터를 삭제할 수 있습니다.</p>
+                  <strong className="block text-lg">Delete Data</strong>
+                  <p> You can remove the most recently added dataset.</p>
                   <p>
-                    마지막 데이터 삭제 버튼을 누르면 가장 최신의 데이터를
-                    삭제해서 차트를 수정할 수 있습니다.
+                    Clicking the &#40;Delete Last Data&#41; button will delete
+                    the latest dataset, allowing you to modify the chart
+                    accordingly.
                   </p>
                   <Button
                     label="Back"

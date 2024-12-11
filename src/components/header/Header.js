@@ -68,20 +68,39 @@ export default function Header() {
   );
 
   const centerContent = (
-    <IconField iconPosition="left">
-      <InputIcon className="pi pi-search" />
-      <InputText placeholder="Search" />
-    </IconField>
+    <>
+      <Button label="한국어" rounded text severity="help" />
+      <Button label=" English" rounded text severity="danger" />
+    </>
   );
 
   const endContent = (
-    <div class="flex gap-2">
-      <SplitButton label="Save" model={items} icon="pi pi-check"></SplitButton>
+    <div class="flex gap-1">
+      <Button
+        label="한국어"
+        rounded
+        text
+        severity="help"
+        aria-label="Favorite"
+        onClick={() => {
+          router.push("/");
+        }}
+      />
+      <Button
+        label=" English"
+        rounded
+        text
+        severity="danger"
+        aria-label="Cancel"
+        onClick={() => {
+          router.push("/en");
+        }}
+      />
     </div>
   );
 
   return (
     // <Toolbar start={startContent} center={centerContent} end={endContent} />
-    <Menubar model={manubarItems} />
+    <Menubar model={manubarItems} end={endContent} />
   );
 }
