@@ -31,11 +31,11 @@ const Home = () => {
             </div>
             <strong>
               시간의 흐름에 따라 추세를 파악하는 데 유리해서 많이 사용되는 차트
-              유형 중 하나에요.
+              유형 중 하나입니다.
             </strong>
             <p className="p-2 border-1 text-sm">
               점을 선으로 연결하여 데이터의 변화를 표시해요. 시간의 흐름에 따라
-              추세를 파악하는 데 유리해요.
+              추세를 파악하는 데 유리합니다.
             </p>
             <span>예시 : 주식 가격 변화나 날씨 변화</span>
           </Card>
@@ -49,7 +49,7 @@ const Home = () => {
                 objectFit="contain" // 원본 비율을 유지하며 컨테이너에 맞춤
               />
             </div>
-            <strong>다양한 범주 간의 비교를 위해 사용해요.</strong>
+            <strong>다양한 범주 간의 비교를 위해 사용합니다.</strong>
             <p className="p-2 border-1 text-sm">
               범주 간의 차이를 직관적으로 시각화할 수 있어 데이터 비교가
               용이해요. 직선 또는 세로 막대가 사용해요. 수직 또는 수평 방식으로
@@ -67,9 +67,9 @@ const Home = () => {
                 objectFit="contain" // 원본 비율을 유지하며 컨테이너에 맞춤
               />
             </div>
-            <strong>두 변수 간의 관계를 보여줄 때 사용해요.</strong>
+            <strong>두 변수 간의 관계를 보여줄 때 사용합니다.</strong>
             <p className="p-2 border-1 text-sm">
-              X축과 Y축에 점을 찍어 변수 간의 상관 관계를 시각화해요.
+              X축과 Y축에 점을 찍어 변수 간의 상관 관계를 시각화합니다.
             </p>
             <span>예시 : 키와 몸무게 간의 관계</span>
           </Card>
@@ -83,7 +83,7 @@ const Home = () => {
                 objectFit="contain" // 원본 비율을 유지하며 컨테이너에 맞춤
               />
             </div>
-            <strong>전체에서 각 부분의 비율을 나타낼 때 사용돼요. </strong>
+            <strong>전체에서 각 부분의 비율을 나타낼 때 사용합니다. </strong>
             <p className="p-2 border-1 text-sm">
               원을 나누어 각 부분의 비율을 나타내며, 직관적으로 이해하기 숴워요.
             </p>
@@ -101,10 +101,10 @@ const Home = () => {
                 objectFit="contain" // 원본 비율을 유지하며 컨테이너에 맞춤
               />
             </div>
-            <strong>데이터를 더 깔끔하게 비교할 수 있어요.</strong>
+            <strong>데이터를 더 깔끔하게 비교할 수 있습니다.</strong>
             <p className="p-2 border-1 text-sm">
               원형 차트와 비슷하지만 중앙에 구멍이 뚫려 있어 데이터를 더
-              깔끔하게 비교할 수 있어요.
+              깔끔하게 비교할 수 있습니다.
             </p>
           </Card>
           <Card>
@@ -117,10 +117,10 @@ const Home = () => {
                 objectFit="contain" // 원본 비율을 유지하며 컨테이너에 맞춤
               />
             </div>
-            <strong>데이터의 분포와 변동성을 한눈에 확인할 수 있어요.</strong>
+            <strong>데이터의 분포와 변동성을 한눈에 확인할 수 있습니다.</strong>
             <p className="p-2 border-1 text-sm">
               데이터의 중앙값, 사분위수, 최대/최소 값을 나타내요. 데이터의
-              분포와 변동성을 시각적으로 보여줘요.
+              분포와 변동성을 시각적으로 보여줍니다.
             </p>
             <span>예시 : 시험 성적이나 소득 분포</span>
           </Card>
