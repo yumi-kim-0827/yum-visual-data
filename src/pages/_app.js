@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
     <>
       <DefaultSeo
         title="visual infographic"
-        description="로그인 없이 데이터를 그래프와 지도에서 시각적으로 확인하고, 더 나은 결정을 내려보세요. 간단히 데이터를 입력하여 직관적인 그래프와 지도에서 결과를 시각화하세요."
+        description="로그인 없이 그래프와 차트 등 인포그래픽을 생성하세요, 간단히 데이터를 입력하여 직관적인 그래프와 지도에서 결과를 시각화하세요."
         openGraph={{
           type: "website",
           locale: "ko_KR",
