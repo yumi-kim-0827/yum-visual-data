@@ -48,6 +48,7 @@ export default function Home() {
         />
       </Fieldset>
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
+        <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
         {myData.length > 0 ? (
           <SimpleBarChart myData={myData} theme={themeList[theme]} />
         ) : (
@@ -100,10 +101,10 @@ export default function Home() {
                   value: 51,
                 },
               ]}
+              theme={themeList[theme]}
             />
           </div>
         )}
-        <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
       </Fieldset>
     </main>
   );

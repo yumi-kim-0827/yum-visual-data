@@ -4,8 +4,14 @@ import { Card } from "primereact/card";
 
 const ColorPicker = ({ handleSelectTheme }) => {
   return (
-    <Card>
-      <p>색상 테마 선택</p>
+    <Card
+      pt={{
+        root: { style: { marginBottom: "1rem" } },
+        body: { style: { padding: "0.625rem", backgroundColor: "#f7f7f7" } },
+        content: { style: { padding: "0" } },
+      }}
+    >
+      <p className="m-0 text-neutral-700 font-bold">색상 테마 선택</p>
       <div className="theme-list p-2 flex gap-2">
         <span
           className="theme-1"

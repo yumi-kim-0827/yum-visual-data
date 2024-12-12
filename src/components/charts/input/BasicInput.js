@@ -15,8 +15,6 @@ export default function BasicInput({
     value: 0,
   });
 
-  console.log(input);
-
   const onChange = (e) => {
     setInput({
       ...input,

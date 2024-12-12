@@ -4,7 +4,7 @@ import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export default function VerticalLabelBarChart({ myData, theme }) {
-  const memoizedMyData = useMemo(() => myData, [myData]);
+  const memoizedMyData = useMemo(() => myData, [myData, theme]);
 
   useLayoutEffect(() => {
     const root = am5.Root.new("chartdiv");
@@ -93,16 +93,9 @@ export default function VerticalLabelBarChart({ myData, theme }) {
 
     //색상 set
     chart.get("colors").set("colors", theme);
-
     series.columns.template.adapters.add("fill", (fill, target) => {
-      // 색상 인덱스가 정확히 매칭될 수 있도록 보장
-      const index = series.columns.indexOf(target);
-      if (index < theme) {
-        return colorSet.getIndex(index); // 색상 인덱스를 색상 테마에 맞게 설정
-      }
-      return fill; // 색상 인덱스가 범위를 벗어나면 기본 색상을 유지
+      return chart.get("colors").getIndex(series.columns.indexOf(target));
     });
-
     series.columns.template.setAll({ strokeOpacity: 0 });
 
     series.appear(1000);
