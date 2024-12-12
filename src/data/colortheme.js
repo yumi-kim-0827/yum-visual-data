@@ -48,6 +48,38 @@ const themeList = [
     am5.color(0x83c421),
     am5.color(0x70b705),
   ],
+  //darkblue
+  [
+    am5.color(0x1c3e60),
+    am5.color(0x1c2260),
+    am5.color(0x1c3261),
+    am5.color(0x3b537a),
+    am5.color(0x0d203f),
+  ],
+  //purple
+  [
+    am5.color(0xb0a6ea),
+    am5.color(0x897fc4),
+    am5.color(0x665aa6),
+    am5.color(0x8163e2),
+    am5.color(0x654db5),
+  ],
+  //collabor1
+  [
+    am5.color(0x77a37f),
+    am5.color(0xefbaac),
+    am5.color(0xa7cc9d),
+    am5.color(0xe5acc0),
+    am5.color(0x88937d),
+  ],
+  //collabor2
+  [
+    am5.color(0x071739),
+    am5.color(0xe3c39d),
+    am5.color(0x2d3d5b),
+    am5.color(0xccc0b7),
+    am5.color(0x032459),
+  ],
 ];
 
 export default themeList;

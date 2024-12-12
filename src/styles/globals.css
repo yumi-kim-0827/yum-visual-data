@@ -29,6 +29,7 @@ body {
   display: none;
 }
 
+/* 스크롤 custom */
 .overflow-y-auto::-webkit-scrollbar {
   width: 10px;
 }
@@ -75,6 +76,66 @@ body {
 
 .theme-5 {
   background-color: #8ec63f;
+}
+
+.theme-6 {
+  background-color: #1c3261;
+}
+
+.theme-7 {
+  background-color: #665aa6;
+}
+
+.theme-8 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #77a37f 0%,
+    #77a37f 49%,
+    #f5dad3 50%,
+    #f5dad3 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #77a37f 0%,
+    #77a37f 49%,
+    #f5dad3 50%,
+    #f5dad3 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #77a37f 0%,
+    #77a37f 49%,
+    #f5dad3 50%,
+    #f5dad3 100%
+  ); /* 표준 */
+}
+
+.theme-9 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #77a37f 0%,
+    #77a37f 49%,
+    #f5dad3 50%,
+    #f5dad3 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #77a37f 0%,
+    #77a37f 49%,
+    #f5dad3 50%,
+    #f5dad3 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #071739 0%,
+    #071739 49%,
+    #e3c39d 50%,
+    #e3c39d 100%
+  ); /* 표준 */
 }
 
 /* prime react custom*/

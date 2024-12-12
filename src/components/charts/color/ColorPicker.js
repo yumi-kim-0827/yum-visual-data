@@ -43,6 +43,30 @@ const ColorPicker = ({ handleSelectTheme }) => {
             handleSelectTheme("5");
           }}
         ></span>
+        <span
+          className="theme-6"
+          onClick={() => {
+            handleSelectTheme("6");
+          }}
+        ></span>
+        <span
+          className="theme-7"
+          onClick={() => {
+            handleSelectTheme("7");
+          }}
+        ></span>
+        <span
+          className="theme-8"
+          onClick={() => {
+            handleSelectTheme("8");
+          }}
+        ></span>
+        <span
+          className="theme-9"
+          onClick={() => {
+            handleSelectTheme("9");
+          }}
+        ></span>
       </div>
     </Card>
   );
