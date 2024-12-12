@@ -3,7 +3,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 
 const SimpleBarChart = ({ myData, theme }) => {
-  const memoizedMyData = useMemo(() => myData, [myData, theme]);
+  const memoizedMyData = useMemo(() => myData, [myData]);
 
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");

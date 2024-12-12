@@ -1,8 +1,10 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useMemo } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 
-const TwoCategoryStackedChart = ({ myData }) => {
+const TwoCategoryStackedChart = ({ myData, theme }) => {
+  const memoizedMyData = useMemo(() => myData, [myData]);
+
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
     root._logo.dispose();
@@ -18,7 +20,7 @@ const TwoCategoryStackedChart = ({ myData }) => {
       })
     );
 
-    let data = myData;
+    let data = memoizedMyData;
 
     // Create axes
     let xRenderer = am5xy.AxisRendererX.new(root, {
@@ -78,6 +80,15 @@ const TwoCategoryStackedChart = ({ myData }) => {
           "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
         tooltipY: am5.percent(10),
       });
+
+      //색상 set
+      chart.get("colors").set("colors", theme);
+      series.columns.template.adapters.add("fill", (fill, target) => {
+        return chart.get("colors").getIndex(series.columns.indexOf(target));
+      });
+      series.columns.template.setAll({ strokeOpacity: 0 });
+
+      //데이터 셋
       series.data.setAll(data);
 
       series.appear();
@@ -104,6 +115,9 @@ const TwoCategoryStackedChart = ({ myData }) => {
       makeSeries(`${twoKeys[i + 1]}`, `${twoKeys[i + 1]}`);
     }
 
+    //색상 set
+
+    //추출
     return () => {
       root.dispose();
     };

@@ -9,6 +9,9 @@ import { FloatLabel } from "primereact/floatlabel";
 import { Button } from "primereact/button";
 import { Fieldset } from "primereact/fieldset";
 import { Divider } from "primereact/divider";
+import ColorPickerContainer from "@/src/components/charts/color/ColorPickerContainer";
+//data
+import themeList from "@/src/data/colortheme";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const TwoCategoryStackedChart = dynamic(
@@ -35,8 +38,17 @@ export default function Home() {
       categoryName: `${categoryName2}`,
     },
   ]);
+
+  //색상 테마 선택 index
+  const [theme, setTheme] = useState(0);
+
   const data1propertyCount = Object.keys(myData[0]).length;
   const data2propertyCount = Object.keys(myData[1]).length;
+
+  //색상 테마 상태 업데이트 함수
+  const handleSelectTheme = (themeNumber) => {
+    setTheme(themeNumber);
+  };
 
   useEffect(() => {
     setMyData([
@@ -200,9 +212,10 @@ export default function Home() {
         </div>
       </Fieldset>
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
+        <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
         {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
         {data1propertyCount > 1 && data2propertyCount > 1 ? (
-          <TwoCategoryStackedChart myData={myData} />
+          <TwoCategoryStackedChart myData={myData} theme={themeList[theme]} />
         ) : (
           <div className="block text-stone-500">
             <div className="pt-2 px-4 pb-4 bg-gray-50 rounded-lg">
@@ -258,6 +271,7 @@ export default function Home() {
                   높이뛰기: 19,
                 },
               ]}
+              theme={themeList[theme]}
             />
           </div>
         )}

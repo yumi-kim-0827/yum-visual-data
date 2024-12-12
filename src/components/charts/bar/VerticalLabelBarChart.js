@@ -4,7 +4,7 @@ import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export default function VerticalLabelBarChart({ myData, theme }) {
-  const memoizedMyData = useMemo(() => myData, [myData, theme]);
+  const memoizedMyData = useMemo(() => myData, [myData]);
 
   useLayoutEffect(() => {
     const root = am5.Root.new("chartdiv");
@@ -98,6 +98,7 @@ export default function VerticalLabelBarChart({ myData, theme }) {
     });
     series.columns.template.setAll({ strokeOpacity: 0 });
 
+    //추출
     series.appear(1000);
     chart.appear(1000, 100);
 
