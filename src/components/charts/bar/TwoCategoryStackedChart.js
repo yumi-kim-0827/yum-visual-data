@@ -6,10 +6,10 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
   const memoizedMyData = useMemo(() => myData, [myData]);
 
   useLayoutEffect(() => {
-    let root = am5.Root.new("chartdiv");
+    const root = am5.Root.new("chartdiv");
     root._logo.dispose();
 
-    let chart = root.container.children.push(
+    const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panX: false,
         panY: false,
@@ -20,13 +20,13 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
       })
     );
 
-    let data = memoizedMyData;
+    const data = memoizedMyData;
 
     // Create axes
-    let xRenderer = am5xy.AxisRendererX.new(root, {
+    const xRenderer = am5xy.AxisRendererX.new(root, {
       minorGridEnabled: true,
     });
-    let xAxis = chart.xAxes.push(
+    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         categoryField: "categoryName",
         renderer: xRenderer,
@@ -40,7 +40,7 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
 
     xAxis.data.setAll(data);
 
-    let yAxis = chart.yAxes.push(
+    const yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
         min: 0,
         max: 100,
@@ -54,7 +54,7 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
     );
 
     // Add legend
-    let legend = chart.children.push(
+    const legend = chart.children.push(
       am5.Legend.new(root, {
         centerX: am5.p50,
         x: am5.p50,
@@ -62,8 +62,8 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
     );
 
     // Add series
-    function makeSeries(name, fieldName) {
-      let series = chart.series.push(
+    function makeSeries(name, fieldName, colorIdx) {
+      const series = chart.series.push(
         am5xy.ColumnSeries.new(root, {
           name: name,
           stacked: true,
@@ -79,14 +79,15 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
         tooltipText:
           "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
         tooltipY: am5.percent(10),
+        fill: theme[colorIdx],
       });
 
       //색상 set
       chart.get("colors").set("colors", theme);
-      series.columns.template.adapters.add("fill", (fill, target) => {
-        return chart.get("colors").getIndex(series.columns.indexOf(target));
-      });
-      series.columns.template.setAll({ strokeOpacity: 0 });
+      // series.columns.template.adapters.add("fill", (fill, target) => {
+      //   return chart.get("colors").getIndex(series.columns.indexOf(target));
+      // });
+      // series.columns.template.setAll({ strokeOpacity: 0 });
 
       //데이터 셋
       series.data.setAll(data);
@@ -108,11 +109,11 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
       legend.data.push(series);
     }
 
-    let twoKeys = Object.keys(data[0]);
-    let renderNumber = twoKeys.length - 1; // 2
+    const twoKeys = Object.keys(data[0]);
+    const renderNumber = twoKeys.length - 1; // 2
 
     for (let i = 0; i < renderNumber; i++) {
-      makeSeries(`${twoKeys[i + 1]}`, `${twoKeys[i + 1]}`);
+      makeSeries(`${twoKeys[i + 1]}`, `${twoKeys[i + 1]}`, i);
     }
 
     //색상 set
@@ -121,7 +122,7 @@ const TwoCategoryStackedChart = ({ myData, theme }) => {
     return () => {
       root.dispose();
     };
-  }, [myData]);
+  }, [memoizedMyData, theme]);
 
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 };
