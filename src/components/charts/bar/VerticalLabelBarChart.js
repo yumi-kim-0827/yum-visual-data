@@ -5,12 +5,12 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export default function VerticalLabelBarChart({ myData, theme }) {
   useLayoutEffect(() => {
-    let root = am5.Root.new("chartdiv");
+    const root = am5.Root.new("chartdiv");
     root._logo.dispose();
 
     root.setThemes([am5themes_Animated.new(root)]);
 
-    let chart = root.container.children.push(
+    const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panX: true,
         panY: true,
@@ -22,11 +22,11 @@ export default function VerticalLabelBarChart({ myData, theme }) {
       })
     );
 
-    let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+    const cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
     cursor.lineY.set("visible", false);
 
     // Create axes
-    let xRenderer = am5xy.AxisRendererX.new(root, {
+    const xRenderer = am5xy.AxisRendererX.new(root, {
       minGridDistance: 30,
       minorGridEnabled: true,
     });
@@ -42,7 +42,7 @@ export default function VerticalLabelBarChart({ myData, theme }) {
       location: 1,
     });
 
-    let xAxis = chart.xAxes.push(
+    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         maxDeviation: 0.3,
         categoryField: "category",
@@ -51,11 +51,11 @@ export default function VerticalLabelBarChart({ myData, theme }) {
       })
     );
 
-    let yRenderer = am5xy.AxisRendererY.new(root, {
+    const yRenderer = am5xy.AxisRendererY.new(root, {
       strokeOpacity: 0.1,
     });
 
-    let yAxis = chart.yAxes.push(
+    const yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
         maxDeviation: 0.3,
         renderer: yRenderer,
@@ -63,7 +63,7 @@ export default function VerticalLabelBarChart({ myData, theme }) {
     );
 
     // Create series
-    let series = chart.series.push(
+    const series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
         name: "Series 1",
         xAxis: xAxis,
@@ -91,7 +91,7 @@ export default function VerticalLabelBarChart({ myData, theme }) {
     });
 
     // 데이타 셋 ****
-    let data = myData;
+    const data = myData;
 
     xAxis.data.setAll(data);
     series.data.setAll(data);

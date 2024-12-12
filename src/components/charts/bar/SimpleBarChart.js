@@ -66,7 +66,7 @@ const SimpleBarChart = ({ myData, theme }) => {
     series.columns.template.setAll({ strokeOpacity: 0 });
 
     // Make stuff animate on load
-    https: series.appear(1000);
+    series.appear(1000);
     chart.appear(1000, 100);
 
     return () => {

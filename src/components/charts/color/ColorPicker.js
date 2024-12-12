@@ -31,6 +31,12 @@ const ColorPicker = ({ handleSelectTheme }) => {
             handleSelectTheme("4");
           }}
         ></span>
+        <span
+          className="theme-5"
+          onClick={() => {
+            handleSelectTheme("5");
+          }}
+        ></span>
       </div>
     </Card>
   );

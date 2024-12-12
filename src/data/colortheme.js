@@ -40,6 +40,14 @@ const themeList = [
     am5.color(0x448cff),
     am5.color(0x2d76ed),
   ],
+  //green
+  [
+    am5.color(0xb1cc88),
+    am5.color(0xa2d15c),
+    am5.color(0x8ec63f),
+    am5.color(0x83c421),
+    am5.color(0x70b705),
+  ],
 ];
 
 export default themeList;
