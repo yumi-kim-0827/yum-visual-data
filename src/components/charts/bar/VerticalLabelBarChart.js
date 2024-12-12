@@ -1,9 +1,11 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useMemo } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export default function VerticalLabelBarChart({ myData, theme }) {
+  const memoizedMyData = useMemo(() => myData, [myData]);
+
   useLayoutEffect(() => {
     const root = am5.Root.new("chartdiv");
     root._logo.dispose();
@@ -82,25 +84,25 @@ export default function VerticalLabelBarChart({ myData, theme }) {
       cornerRadiusTR: 5,
       strokeOpacity: 0,
     });
-    series.columns.template.adapters.add("fill", function (fill, target) {
-      return chart.get("colors").getIndex(series.columns.indexOf(target));
-    });
-
-    series.columns.template.adapters.add("stroke", function (stroke, target) {
-      return chart.get("colors").getIndex(series.columns.indexOf(target));
-    });
 
     // 데이타 셋 ****
-    const data = myData;
+    const data = memoizedMyData;
 
     xAxis.data.setAll(data);
     series.data.setAll(data);
 
     //색상 set
     chart.get("colors").set("colors", theme);
+
     series.columns.template.adapters.add("fill", (fill, target) => {
-      return chart.get("colors").getIndex(series.columns.indexOf(target));
+      // 색상 인덱스가 정확히 매칭될 수 있도록 보장
+      const index = series.columns.indexOf(target);
+      if (index < theme) {
+        return colorSet.getIndex(index); // 색상 인덱스를 색상 테마에 맞게 설정
+      }
+      return fill; // 색상 인덱스가 범위를 벗어나면 기본 색상을 유지
     });
+
     series.columns.template.setAll({ strokeOpacity: 0 });
 
     series.appear(1000);
@@ -109,7 +111,7 @@ export default function VerticalLabelBarChart({ myData, theme }) {
     return () => {
       root.dispose();
     };
-  }, [myData, theme]);
+  }, [memoizedMyData, theme]);
 
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 }
