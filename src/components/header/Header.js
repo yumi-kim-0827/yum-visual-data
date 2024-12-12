@@ -75,7 +75,9 @@ export default function Header() {
         rounded
         text
         severity="danger"
-        onClick={router.push("/en/insight/infographicInfo")}
+        onClick={() => {
+          router.push("/en/insight/infographicInfo");
+        }}
       />
     </>
   );
