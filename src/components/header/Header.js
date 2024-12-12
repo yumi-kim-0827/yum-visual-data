@@ -70,7 +70,13 @@ export default function Header() {
   const centerContent = (
     <>
       <Button label="한국어" rounded text severity="help" />
-      <Button label=" English" rounded text severity="danger" />
+      <Button
+        label=" English"
+        rounded
+        text
+        severity="danger"
+        onClick={router.push("/en/insight/infographicInfo")}
+      />
     </>
   );
 
