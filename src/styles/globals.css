@@ -22,7 +22,7 @@ body {
 
 * {
   list-style: none;
-  line-height: 1.6;
+  line-height: 1.2;
 }
 
 .table-caption {
@@ -41,4 +41,39 @@ body {
 
 .overflow-y-auto::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+/* 칼라 테마 */
+.theme-list span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+}
+
+.theme-list span:hover {
+  transform: scale(110%);
+}
+
+.theme-1 {
+  background-color: #dd566a;
+}
+
+.theme-2 {
+  background-color: #ffdc3f;
+}
+
+.theme-3 {
+  background-color: #fc733d;
+}
+
+.theme-4 {
+  background-color: #649eff;
+}
+
+/* prime react custom*/
+.p-fieldset .p-fieldset-content {
+  padding: 0;
 }

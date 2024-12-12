@@ -2,14 +2,14 @@ import React, { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 
-const SimpleBarChart = ({ myData }) => {
+const SimpleBarChart = ({ myData, theme }) => {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
     root._logo.dispose();
 
     let chart = root.container.children.push(
       am5xy.XYChart.new(root, {
-        panX: true,
+        panX: false,
         panY: true,
         wheelX: "panX",
         wheelY: "zoomX",
@@ -33,12 +33,18 @@ const SimpleBarChart = ({ myData }) => {
       })
     );
 
+    // Add cursor
+    let cursor = chart.set(
+      "cursor",
+      am5xy.XYCursor.new(root, {
+        behavior: "zoomX",
+      })
+    );
+    cursor.lineY.set("visible", false);
+
     // 데이타 셋
     let data = myData;
-
-    // Add data
     xAxis.data.setAll(data);
-    //***//
 
     let series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
@@ -52,14 +58,21 @@ const SimpleBarChart = ({ myData }) => {
 
     series.data.setAll(data);
 
+    //색상 set
+    chart.get("colors").set("colors", theme);
+    series.columns.template.adapters.add("fill", (fill, target) => {
+      return chart.get("colors").getIndex(series.columns.indexOf(target));
+    });
+    series.columns.template.setAll({ strokeOpacity: 0 });
+
     // Make stuff animate on load
-    series.appear(1000);
+    https: series.appear(1000);
     chart.appear(1000, 100);
 
     return () => {
       root.dispose();
     };
-  }, [myData]);
+  }, [myData, theme]);
 
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 };

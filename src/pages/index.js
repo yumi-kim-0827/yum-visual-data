@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 //components
@@ -18,6 +18,8 @@ const GradientChart = dynamic(
 
 export default function Home() {
   const stepperRef = useRef(null);
+  //그래프 색상관리
+  const [theme, setTheme] = useState();
 
   return (
     <main className="w-full">

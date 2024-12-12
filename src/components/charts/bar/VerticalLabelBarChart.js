@@ -3,7 +3,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-export default function VerticalLabelBarChart({ myData }) {
+export default function VerticalLabelBarChart({ myData, theme }) {
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
     root._logo.dispose();
@@ -95,7 +95,13 @@ export default function VerticalLabelBarChart({ myData }) {
 
     xAxis.data.setAll(data);
     series.data.setAll(data);
-    //***//
+
+    //색상 set
+    chart.get("colors").set("colors", theme);
+    series.columns.template.adapters.add("fill", (fill, target) => {
+      return chart.get("colors").getIndex(series.columns.indexOf(target));
+    });
+    series.columns.template.setAll({ strokeOpacity: 0 });
 
     series.appear(1000);
     chart.appear(1000, 100);
@@ -103,7 +109,7 @@ export default function VerticalLabelBarChart({ myData }) {
     return () => {
       root.dispose();
     };
-  }, [myData]);
+  }, [myData, theme]);
 
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 }

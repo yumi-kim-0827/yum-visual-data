@@ -3,6 +3,9 @@ import dynamic from "next/dynamic";
 //components
 import { Fieldset } from "primereact/fieldset";
 import BasicInput from "@/src/components/charts/input/BasicInput";
+import ColorPickerContainer from "@/src/components/charts/color/ColorPickerContainer";
+//data
+import themeList from "@/src/data/colortheme";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
 const SimpleBarChart = dynamic(
@@ -15,13 +18,22 @@ const SimpleBarChart = dynamic(
 export default function Home() {
   //전달 데이터
   const [myData, setData] = useState([]);
+  //색상 테마 선택 index
+  const [theme, setTheme] = useState(0);
+
   //데이터 추가 핸들러
   const handleClickDataUpdate = (input) => {
     setData((prev) => [...prev, { ...input, value: parseInt(input.value) }]);
   };
+
   //마지막 데이터 삭제 핸들러
   const handleClickDataDelete = () => {
     setData((prev) => prev.slice(0, -1));
+  };
+
+  //색상 테마 상태 업데이트 함수
+  const handleSelectTheme = (themeNumber) => {
+    setTheme(themeNumber);
   };
 
   return (
@@ -37,7 +49,7 @@ export default function Home() {
       </Fieldset>
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         {myData.length > 0 ? (
-          <SimpleBarChart myData={myData} />
+          <SimpleBarChart myData={myData} theme={themeList[theme]} />
         ) : (
           <div className="block text-stone-500">
             <div className="pt-2 px-4 pb-4 bg-gray-50 rounded-lg">
@@ -91,6 +103,7 @@ export default function Home() {
             />
           </div>
         )}
+        <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
       </Fieldset>
     </main>
   );
