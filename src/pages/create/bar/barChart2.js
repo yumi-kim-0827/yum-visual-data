@@ -22,8 +22,8 @@ const TwoCategoryStackedChart = dynamic(
 );
 
 export default function Home() {
-  const [categoryName1, setCategoryName1] = useState("항목1");
-  const [categoryName2, setCategoryName2] = useState("항목2");
+  const [categoryName1, setCategoryName1] = useState("");
+  const [categoryName2, setCategoryName2] = useState("");
   const [firstDataKey, setFirstDataKey] = useState("");
   const [firstDataValue, setFirstDataValue] = useState(null);
   const [secondDataKey, setSecondDataKey] = useState("");
@@ -107,7 +107,7 @@ export default function Home() {
                     setCategoryName1(e.target.value);
                   }}
                 />
-                <label htmlFor="username">첫번째 비교군</label>
+                <label htmlFor="username">첫번째 비교군 이름</label>
               </FloatLabel>
               <FloatLabel>
                 <InputText
@@ -118,7 +118,7 @@ export default function Home() {
                     setCategoryName2(e.target.value);
                   }}
                 />
-                <label htmlFor="username">두번째 비교군</label>
+                <label htmlFor="username">두번째 비교군 이름</label>
               </FloatLabel>
             </div>
           </div>

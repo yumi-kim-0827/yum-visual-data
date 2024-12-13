@@ -22,7 +22,7 @@ export default function Header() {
     {
       label: "사용 설명",
       icon: "pi pi-home",
-      command: () => router.push("/"),
+      command: () => router.push("/insight/help"),
     },
     {
       label: "궁금해요",
@@ -46,41 +46,6 @@ export default function Header() {
       ],
     },
   ];
-  //우측 버튼 메뉴
-  const items = [
-    {
-      label: "Update",
-      icon: "pi pi-refresh",
-    },
-    {
-      label: "Delete",
-      icon: "pi pi-times",
-    },
-  ];
-
-  //툴바 구성
-  const startContent = (
-    <>
-      <Button icon="pi pi-plus" className="mr-2" />
-      <Button icon="pi pi-print" className="mr-2" />
-      <Button icon="pi pi-upload" />
-    </>
-  );
-
-  const centerContent = (
-    <>
-      <Button label="한국어" rounded text severity="help" />
-      <Button
-        label=" English"
-        rounded
-        text
-        severity="danger"
-        onClick={() => {
-          router.push("/en/insight/infographicInfo");
-        }}
-      />
-    </>
-  );
 
   const endContent = (
     <div class="flex gap-1">

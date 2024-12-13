@@ -18,8 +18,6 @@ const GradientChart = dynamic(
 
 export default function Home() {
   const stepperRef = useRef(null);
-  //그래프 색상관리
-  const [theme, setTheme] = useState();
 
   return (
     <main className="w-full">
@@ -55,6 +53,32 @@ export default function Home() {
               ]}
             />
           </div>
+        </div>
+        <div className="my-40">
+          <h2 className="text-center">
+            원하는 그래프를 간편하게 만들어 보세요
+          </h2>
+          <h3 className="text-center">
+            간단하고 빠르게 무료로 인포그래픽을 생성하세요
+          </h3>
+          <div className="relative h-[400px]">
+            <Image
+              src="/images/img_1.png" // public 폴더 내 경로
+              alt="My Image"
+              layout="fill" // 부모 컨테이너를 기준으로 채움
+              objectFit="contain" // 원본 비율을 유지하며 컨테이너에 맞춤
+            />
+          </div>
+
+          <p className="p-2 border-1 border-slate-400 bg-gray-50 text-center">
+            그래프는 데이터를 시각적으로 표현하여 분석하고 통찰을 얻을 수 있도록
+            도와주는 도구입니다. 그래프의 유형은 데이터의 특성이나 분석 목적에
+            따라 다양하게 나눌 수 있습니다.
+            <br />
+            파이 차트, 막대 그래프, 꺾은선 그래프 등 다양한 유형의 차트를 몇
+            번의 클릭만으로 제작해보세요. 직관적인 인터페이스와 색상테마
+            옵션으로 전문적인 결과물을 손쉽게 완성할 수 있습니다.
+          </p>
         </div>
         <div className="my-40">
           <h2 className="text-center">그래프 유형</h2>

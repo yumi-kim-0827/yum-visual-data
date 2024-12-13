@@ -11,7 +11,7 @@ export default function PanelMenuBar() {
       icon: "pi pi-chart-line",
       items: [
         {
-          label: "심플 원칼라 막대그래프",
+          label: "기본 막대그래프",
           icon: "pi pi-pencil",
           command: () => router.push("/create/bar"),
         },

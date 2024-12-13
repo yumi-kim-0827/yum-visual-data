@@ -126,12 +126,33 @@ const Home = () => {
           </Card>
         </div>
         <h2>타사이트의 차트 생성 프로그램</h2>
-        <div>
+        <div className="grid grid-cols-2">
           <div className="flex gap-2 items-center">
             <Chip label="infogram.com" />
             <p>
               인포그래픽과 데이터 시각화를 쉽게 만들 수 있는 온라인
               플랫폼입니다.
+            </p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <Chip label="Google Charts" />
+            <p>
+              Google의 무료 차트 생성 도구로, HTML 및 JavaScript와 통합하여
+              대화형 차트를 생성이 가능합니다.
+            </p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <Chip label="Canva" />
+            <p>
+              디자이너를 위한 간단한 차트 및 그래프 도구로 차트 디자인이
+              깔끔하고 직과적입니다. 팀과 협업 및 데이터 공유 기능을 지원합니다.
+            </p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <Chip label="chartgo.com" />
+            <p>
+              간단한 차트 생성 도구로 빠른 시각화가 가능하며, UI가 단순하고
+              사용법이 쉽습니다.
             </p>
           </div>
         </div>
