@@ -82,6 +82,10 @@ body {
   background-color: #1c3261;
 }
 
+.theme-15 {
+  background-color: #fab0ff;
+}
+
 .theme-7 {
   background-color: #665aa6;
 }
@@ -138,6 +142,135 @@ body {
   ); /* 표준 */
 }
 
+.theme-10 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #50586c 0%,
+    #50586c 49%,
+    #dce2f0 50%,
+    #dce2f0 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #50586c 0%,
+    #50586c 49%,
+    #dce2f0 50%,
+    #dce2f0 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #50586c 0%,
+    #50586c 49%,
+    #dce2f0 50%,
+    #dce2f0 100%
+  ); /* 표준 */
+}
+
+.theme-11 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #f5d042 0%,
+    #f5d042 49%,
+    #0a174e 50%,
+    #0a174e 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #f5d042 0%,
+    #f5d042 49%,
+    #0a174e 50%,
+    #0a174e 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #f5d042 0%,
+    #f5d042 49%,
+    #0a174e 50%,
+    #0a174e 100%
+  ); /* 표준 */
+}
+
+.theme-12 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #0063b2 0%,
+    #0063b2 49%,
+    #9cc3d5 50%,
+    #9cc3d5 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #0063b2 0%,
+    #0063b2 49%,
+    #9cc3d5 50%,
+    #9cc3d5 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #0063b2 0%,
+    #0063b2 49%,
+    #9cc3d5 50%,
+    #9cc3d5 100%
+  ); /* 표준 */
+}
+
+.theme-13 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #a07855 0%,
+    #a07855 49%,
+    #d4b996 50%,
+    #d4b996 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #a07855 0%,
+    #a07855 49%,
+    #d4b996 50%,
+    #d4b996 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #a07855 0%,
+    #a07855 49%,
+    #d4b996 50%,
+    #d4b996 100%
+  ); /* 표준 */
+}
+
+.theme-14 {
+  background: -webkit-linear-gradient(
+    90deg,
+    #df6589 0%,
+    #df6589 49%,
+    #3c1053 50%,
+    #3c1053 100%
+  ); /* Safari, Chrome, Edge */
+
+  background: -moz-linear-gradient(
+    90deg,
+    #df6589 0%,
+    #df6589 49%,
+    #3c1053 50%,
+    #3c1053 100%
+  ); /* Firefox */
+
+  background: linear-gradient(
+    90deg,
+    #df6589 0%,
+    #df6589 49%,
+    #3c1053 50%,
+    #3c1053 100%
+  ); /* 표준 */
+}
 /* prime react custom*/
 .p-fieldset .p-fieldset-content {
   padding: 0;

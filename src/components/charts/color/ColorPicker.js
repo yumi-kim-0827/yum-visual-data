@@ -50,6 +50,12 @@ const ColorPicker = ({ handleSelectTheme }) => {
           }}
         ></span>
         <span
+          className="theme-15"
+          onClick={() => {
+            handleSelectTheme("15");
+          }}
+        ></span>
+        <span
           className="theme-7"
           onClick={() => {
             handleSelectTheme("7");
@@ -65,6 +71,36 @@ const ColorPicker = ({ handleSelectTheme }) => {
           className="theme-9"
           onClick={() => {
             handleSelectTheme("9");
+          }}
+        ></span>
+        <span
+          className="theme-10"
+          onClick={() => {
+            handleSelectTheme("10");
+          }}
+        ></span>
+        <span
+          className="theme-11"
+          onClick={() => {
+            handleSelectTheme("11");
+          }}
+        ></span>
+        <span
+          className="theme-12"
+          onClick={() => {
+            handleSelectTheme("12");
+          }}
+        ></span>
+        <span
+          className="theme-13"
+          onClick={() => {
+            handleSelectTheme("13");
+          }}
+        ></span>
+        <span
+          className="theme-14"
+          onClick={() => {
+            handleSelectTheme("14");
           }}
         ></span>
       </div>
