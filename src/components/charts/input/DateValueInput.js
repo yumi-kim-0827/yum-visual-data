@@ -15,10 +15,6 @@ export default function DateValueInput({
     value: null,
   });
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   function formatDate(date) {
     if (!date) return;
     const localDate = new Date(

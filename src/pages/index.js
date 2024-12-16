@@ -27,11 +27,11 @@ export default function Home() {
       >
         <div className="flex items-center justify-between">
           <div className="w-1/3">
-            <h2 className="text-5xl ">
+            <h2 className="text-5xl leading-relaxed">
               로그인할 필요 없이 데이터를 그래프와 지도에서 시각적으로 확인하고,
               더 나은 결정을 내려보세요.
             </h2>
-            <p className="text-2xl">
+            <p className="text-2xl leading-relaxed">
               간단히 데이터를 입력하고, 직관적인 그래프와 지도에서 그려냅니다.
               시각화된 인포그래픽을 활용하세요.
             </p>

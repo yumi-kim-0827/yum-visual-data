@@ -25,6 +25,11 @@ export default function PanelMenuBar() {
           icon: "pi pi-pencil",
           command: () => router.push("/create/bar/barChart2"),
         },
+        {
+          label: "년도별 두항목 비교 클러스터",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/bar/barChart3"),
+        },
       ],
     },
     {
