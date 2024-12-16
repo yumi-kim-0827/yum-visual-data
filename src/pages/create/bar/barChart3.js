@@ -24,34 +24,45 @@ const TwoCategoryClusterChart = dynamic(
 
 export default function Home() {
   const [year, setYear] = useState(null);
+  const [firstDataKey, setFirstDataKey] = useState("");
+  const [firstDataValue, setFirstDataValue] = useState(null);
+  const [secondDataKey, setSecondDataKey] = useState("");
+  const [secondDataValue, setSecondDataValue] = useState(null);
+  const [updatedData, setUpdatedData] = useState({});
   //최종 데이터
-  //   const [myData, setMyData] = useState([
-  //     {
-  //       categoryName: `${categoryName1}`,
-  //     },
-  //     {
-  //       categoryName: `${categoryName2}`,
-  //     },
-  //   ]);
+  const [myData, setMyData] = useState([]);
 
-  const [myData, setMyData] = useState([
-    {
-      year: "2017",
-      income: 23.5,
-      expenses: 18.1,
-    },
-    {
-      year: "2018",
-      income: 26.2,
-      expenses: 22.8,
-    },
-  ]);
-  console.log(myData);
+  //데이터 추가
+  const handleAddData = () => {
+    if (firstDataValue & secondDataValue) {
+      setMyData((prev) => {
+        const existsYear = prev.some((data) => data.year === updatedData.year);
+        return existsYear ? prev : [...prev, updatedData];
+      });
+    } else {
+      alert("데이터 값을 모두 입력해주세요");
+    }
+
+    setFirstDataValue(null);
+    setSecondDataValue(null);
+  };
+
+  useEffect(() => {
+    const updated = {
+      year: `${year}`,
+      [firstDataKey]: firstDataValue,
+      [secondDataKey]: secondDataValue,
+    };
+
+    setUpdatedData(updated);
+  }, [year, firstDataKey, firstDataValue, secondDataKey, secondDataValue]);
+
   //색상 테마 선택 index
   const [theme, setTheme] = useState(0);
 
-  const data1propertyCount = Object.keys(myData[0]).length;
-  const data2propertyCount = Object.keys(myData[1]).length;
+  //   const data1propertyCount = Object.keys(myData[0]).length;
+  const data1propertyCount = 2;
+  //   const data2propertyCount = Object.keys(myData[1]).length;
 
   //색상 테마 상태 업데이트 함수
   const handleSelectTheme = (themeNumber) => {
@@ -80,9 +91,9 @@ export default function Home() {
                 <InputText
                   id="username"
                   name="category"
-                  // value={firstDataKey}
+                  value={firstDataKey}
                   onChange={(e) => {
-                    //   setFirstDataKey(e.target.value);
+                    setFirstDataKey(e.target.value);
                   }}
                   className="w-full"
                 />
@@ -99,9 +110,9 @@ export default function Home() {
                 <InputText
                   id="username"
                   name="category"
-                  // value={firstDataKey}
+                  value={secondDataKey}
                   onChange={(e) => {
-                    //   setFirstDataKey(e.target.value);
+                    setSecondDataKey(e.target.value);
                   }}
                   className="w-full"
                 />
@@ -113,8 +124,12 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <label>년도 선택</label>
             <Calendar
-              value={year}
-              onChange={(e) => setYear(e.value)}
+              year={year}
+              onChange={(e) => {
+                if (e.value) {
+                  setYear(new Date(e.value).getFullYear()); // 연도만 저장
+                }
+              }}
               view="year"
               dateFormat="yy"
               showIcon
@@ -128,9 +143,9 @@ export default function Home() {
                 <InputNumber
                   id="username"
                   name="category"
-                  //   value={firstDataValue}
+                  value={firstDataValue}
                   onChange={(e) => {
-                    // setFirstDataValue(e.value);
+                    setFirstDataValue(e.value);
                   }}
                   className="w-full"
                 />
@@ -148,9 +163,9 @@ export default function Home() {
               >
                 <InputNumber
                   id="username"
-                  //   value={secondDataValue}
+                  value={secondDataValue}
                   onChange={(e) => {
-                    // setSecondDataValue(e.value);
+                    setSecondDataValue(e.value);
                   }}
                   className="w-full"
                 />
@@ -162,14 +177,20 @@ export default function Home() {
             label="데이터 추가"
             icon="pi pi-plus-circle"
             className="w-full"
+            onClick={handleAddData}
           />
         </div>
       </Fieldset>
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
         {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
-        {data1propertyCount > 1 && data2propertyCount > 1 ? (
-          <TwoCategoryClusterChart myData={myData} theme={themeList[theme]} />
+        {data1propertyCount > 1 ? (
+          <TwoCategoryClusterChart
+            myData={myData}
+            firstDataKey={firstDataKey}
+            secondDataKey={secondDataKey}
+            theme={themeList[theme]}
+          />
         ) : (
           <div className="block text-stone-500">
             <div className="pt-2 px-4 pb-4 bg-gray-50 rounded-lg">

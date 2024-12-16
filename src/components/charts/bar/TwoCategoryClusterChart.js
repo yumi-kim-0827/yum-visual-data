@@ -4,8 +4,16 @@ import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5index from "@amcharts/amcharts5/index";
 import * as am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-const TwoCategoryClusterChart = ({ myData, theme }) => {
-  const memoizedMyData = useMemo(() => myData, [myData]);
+const TwoCategoryClusterChart = ({
+  myData,
+  firstDataKey,
+  secondDataKey,
+  theme,
+}) => {
+  const memoizedMyData = useMemo(
+    () => myData,
+    [myData, firstDataKey, secondDataKey]
+  );
 
   useLayoutEffect(() => {
     let root = am5.Root.new("chartdiv");
@@ -115,8 +123,8 @@ const TwoCategoryClusterChart = ({ myData, theme }) => {
       return series;
     }
 
-    createSeries("income", "Income");
-    createSeries("expenses", "Expenses");
+    createSeries(`${firstDataKey}`, `${firstDataKey}`);
+    createSeries(`${secondDataKey}`, `${secondDataKey}`);
 
     legend.data.setAll(chart.series.values);
 
@@ -139,7 +147,7 @@ const TwoCategoryClusterChart = ({ myData, theme }) => {
     return () => {
       root.dispose();
     };
-  }, [memoizedMyData, theme]);
+  }, [memoizedMyData, theme, firstDataKey, secondDataKey]);
 
   return <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>;
 };
