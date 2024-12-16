@@ -23,6 +23,7 @@ const TwoCategoryClusterChart = dynamic(
 );
 
 export default function Home() {
+  const [inputDisable, setInputDisable] = useState(false);
   const [year, setYear] = useState(null);
   const [firstDataKey, setFirstDataKey] = useState("");
   const [firstDataValue, setFirstDataValue] = useState(null);
@@ -39,6 +40,7 @@ export default function Home() {
         const existsYear = prev.some((data) => data.year === updatedData.year);
         return existsYear ? prev : [...prev, updatedData];
       });
+      setInputDisable(true);
     } else {
       alert("데이터 값을 모두 입력해주세요");
     }
@@ -81,11 +83,11 @@ export default function Home() {
         />
         <div className="flex flex-col gap-4">
           <div className="flex gap-2">
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col items-start gap-2">
               <Badge value="첫번째 비교 데이터 명"></Badge>
               <FloatLabel
                 pt={{
-                  root: { style: { flex: "1" } },
+                  root: { style: { flex: "1", width: "100%" } },
                 }}
               >
                 <InputText
@@ -96,15 +98,16 @@ export default function Home() {
                     setFirstDataKey(e.target.value);
                   }}
                   className="w-full"
+                  disabled={inputDisable}
                 />
                 <label htmlFor="username">첫번째 데이터 명</label>
               </FloatLabel>
             </div>
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col items-start gap-2">
               <Badge value="두번째 비교 데이터 명"></Badge>
               <FloatLabel
                 pt={{
-                  root: { style: { flex: "1" } },
+                  root: { style: { flex: "1", width: "100%" } },
                 }}
               >
                 <InputText
@@ -115,14 +118,18 @@ export default function Home() {
                     setSecondDataKey(e.target.value);
                   }}
                   className="w-full"
+                  disabled={inputDisable}
                 />
                 <label htmlFor="username">두번째 데이터 명</label>
               </FloatLabel>
             </div>
           </div>
-
+          <Message
+            text="데이터 추가 버튼을 누르면 데이터명 수정이 불가합니다."
+            className="mb-2"
+          />
           <div className="flex items-center gap-4">
-            <label>년도 선택</label>
+            <label>연도 선택</label>
             <Calendar
               year={year}
               onChange={(e) => {
