@@ -5,7 +5,6 @@ import { Fieldset } from "primereact/fieldset";
 import { Panel } from "primereact/panel";
 import { ColorPicker } from "primereact/colorpicker";
 import { Card } from "primereact/card";
-import { Chip } from "primereact/chip";
 
 const Home = () => {
   const [color, setColor] = useState(null);

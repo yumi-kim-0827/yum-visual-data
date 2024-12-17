@@ -25,6 +25,11 @@ body {
   line-height: 1.6;
 }
 
+input.p-disabled,
+input.p-component:disabled {
+  opacity: 1;
+}
+
 .table-caption {
   display: none;
 }
