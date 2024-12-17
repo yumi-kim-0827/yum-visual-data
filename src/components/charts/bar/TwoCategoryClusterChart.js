@@ -43,7 +43,6 @@ const TwoCategoryClusterChart = ({
     let data = memoizedMyData;
 
     // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
     let yAxis = chart.yAxes.push(
       am5xy.CategoryAxis.new(root, {
         categoryField: "year",
@@ -68,8 +67,15 @@ const TwoCategoryClusterChart = ({
       })
     );
 
+    //색상 set
+    const colorSet = am5.ColorSet.new(root, {
+      colors: theme.map((color) => am5.color(color)), // Convert theme array to am5 colors
+      reuse: true,
+    });
+
+    chart.set("colors", colorSet);
+
     // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
     function createSeries(field, name) {
       let series = chart.series.push(
         am5xy.ColumnSeries.new(root, {
@@ -129,7 +135,6 @@ const TwoCategoryClusterChart = ({
     legend.data.setAll(chart.series.values);
 
     // Add cursor
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
     let cursor = chart.set(
       "cursor",
       am5xy.XYCursor.new(root, {
@@ -140,7 +145,6 @@ const TwoCategoryClusterChart = ({
     cursor.lineX.set("forceHidden", true);
 
     // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
     chart.appear(1000, 100);
 
     //추출
