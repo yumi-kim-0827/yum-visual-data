@@ -84,6 +84,17 @@ export default function PanelMenuBar() {
         },
       ],
     },
+    {
+      label: "도구",
+      icon: "pi pi-wrench",
+      items: [
+        {
+          label: "색상 코드 추출",
+          icon: "pi pi-palette",
+          command: () => router.push("/tools/colorPick"),
+        },
+      ],
+    },
   ];
   return <PanelMenu model={items} className="w-full md:w-20rem" />;
 }

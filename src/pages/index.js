@@ -26,7 +26,7 @@ export default function Home() {
         className="w-full h-full overflow-y-auto"
       >
         <div className="flex items-center justify-between">
-          <div className="w-1/3">
+          <div className="pl-4 w-1/3">
             <h2 className="text-5xl leading-relaxed">
               로그인할 필요 없이 데이터를 그래프와 지도에서 시각적으로 확인하고,
               더 나은 결정을 내려보세요.
