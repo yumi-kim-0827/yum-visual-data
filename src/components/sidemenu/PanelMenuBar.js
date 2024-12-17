@@ -11,12 +11,12 @@ export default function PanelMenuBar() {
       icon: "pi pi-chart-line",
       items: [
         {
-          label: "기본 막대그래프",
+          label: "기본 수직 막대그래프",
           icon: "pi pi-pencil",
           command: () => router.push("/create/bar"),
         },
         {
-          label: "수직 라벨 막대그래프",
+          label: "기본 수직 라벨 막대그래프",
           icon: "pi pi-pencil",
           command: () => router.push("/create/bar/barChart1"),
         },
@@ -26,9 +26,14 @@ export default function PanelMenuBar() {
           command: () => router.push("/create/bar/barChart2"),
         },
         {
-          label: "년도별 두항목 비교 클러스터",
+          label: "년도별 두 항목 비교 클러스터",
           icon: "pi pi-pencil",
           command: () => router.push("/create/bar/barChart3"),
+        },
+        {
+          label: "년도별 세 항목 비교 클러스터",
+          icon: "pi pi-pencil",
+          command: () => router.push("/create/bar/barChart4"),
         },
       ],
     },

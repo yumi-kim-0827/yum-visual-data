@@ -15,8 +15,8 @@ import ColorPickerContainer from "@/src/components/charts/color/ColorPickerConta
 import themeList from "@/src/data/colortheme";
 
 // 클라이언트 사이드에서만 렌더링하도록 설정
-const TwoCategoryClusterChart = dynamic(
-  () => import("@/src/components/charts/bar/TwoCategoryClusterChart"),
+const ThreeCategoryClusterChart = dynamic(
+  () => import("@/src/components/charts/bar/ThreeCategoryClusterChart"),
   {
     ssr: false,
   }
@@ -29,13 +29,15 @@ export default function Home() {
   const [firstDataValue, setFirstDataValue] = useState(null);
   const [secondDataKey, setSecondDataKey] = useState("");
   const [secondDataValue, setSecondDataValue] = useState(null);
+  const [threeDataKey, setThreeDataKey] = useState("");
+  const [threeDataValue, setThreeDataValue] = useState(null);
   const [updatedData, setUpdatedData] = useState({});
   //최종 데이터
   const [myData, setMyData] = useState([]);
   console.log(myData);
   //데이터 추가
   const handleAddData = () => {
-    if (firstDataValue && secondDataValue) {
+    if (firstDataValue && secondDataValue && threeDataValue) {
       setMyData((prev) => {
         const existsYear = prev.some((data) => data.year === updatedData.year);
         return existsYear ? prev : [...prev, updatedData];
@@ -47,6 +49,7 @@ export default function Home() {
 
     setFirstDataValue(null);
     setSecondDataValue(null);
+    setThreeDataValue(null);
   };
 
   useEffect(() => {
@@ -54,10 +57,19 @@ export default function Home() {
       year: `${year}`,
       [firstDataKey]: firstDataValue,
       [secondDataKey]: secondDataValue,
+      [threeDataKey]: threeDataValue,
     };
 
     setUpdatedData(updated);
-  }, [year, firstDataKey, firstDataValue, secondDataKey, secondDataValue]);
+  }, [
+    year,
+    firstDataKey,
+    firstDataValue,
+    secondDataKey,
+    secondDataValue,
+    threeDataKey,
+    threeDataValue,
+  ]);
 
   //색상 테마 선택 index
   const [theme, setTheme] = useState(0);
@@ -77,6 +89,9 @@ export default function Home() {
           text="연도별 두 카테고리의 데이터값을 입력합니다."
           className="mb-2"
         />
+        {firstDataKey}
+        {secondDataKey}
+        {threeDataKey}
         <div className="flex flex-col gap-4">
           <div className="flex gap-2">
             <div className="flex-1 flex flex-col items-start gap-2">
@@ -119,6 +134,26 @@ export default function Home() {
                 <label htmlFor="username">두번째 데이터 명</label>
               </FloatLabel>
             </div>
+            <div className="flex-1 flex flex-col items-start gap-2">
+              <Badge value="세번째 비교 데이터 명"></Badge>
+              <FloatLabel
+                pt={{
+                  root: { style: { flex: "1", width: "100%" } },
+                }}
+              >
+                <InputText
+                  id="username"
+                  name="category"
+                  value={threeDataKey}
+                  onChange={(e) => {
+                    setThreeDataKey(e.target.value);
+                  }}
+                  className="w-full"
+                  disabled={inputDisable}
+                />
+                <label htmlFor="username">세번째 데이터 명</label>
+              </FloatLabel>
+            </div>
           </div>
           <Message
             text="데이터 추가 버튼을 누르면 데이터명 수정이 불가합니다."
@@ -152,7 +187,7 @@ export default function Home() {
                   }}
                   className="w-full"
                 />
-                <label htmlFor="username">데이터값</label>
+                <label htmlFor="username">숫자를 입력해주세요</label>
               </FloatLabel>
             </div>
           </div>
@@ -172,12 +207,30 @@ export default function Home() {
                   }}
                   className="w-full"
                 />
-                <label htmlFor="username">데이터값</label>
+                <label htmlFor="username">숫자를 입력해주세요</label>
               </FloatLabel>
             </div>
           </div>
-          {firstDataValue}
-          {secondDataValue}
+          <div className="flex-1 flex flex-col items-start gap-2">
+            <Badge value="세번째 비교 데이터 값" className="mb-2"></Badge>
+            <div className="w-full flex items-center gap-2">
+              <FloatLabel
+                pt={{
+                  root: { style: { flex: "1" } },
+                }}
+              >
+                <InputNumber
+                  id="username"
+                  value={threeDataValue}
+                  onChange={(e) => {
+                    setThreeDataValue(e.value);
+                  }}
+                  className="w-full"
+                />
+                <label htmlFor="username">숫자를 입력해주세요</label>
+              </FloatLabel>
+            </div>
+          </div>
           <Button
             label="데이터 추가"
             icon="pi pi-plus-circle"
@@ -189,11 +242,12 @@ export default function Home() {
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
         {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
-        {firstDataKey !== "" || secondDataKey !== "" ? (
-          <TwoCategoryClusterChart
+        {firstDataKey !== "" || secondDataKey !== "" || threeDataKey !== "" ? (
+          <ThreeCategoryClusterChart
             myData={myData}
             firstDataKey={firstDataKey}
             secondDataKey={secondDataKey}
+            threeDataKey={threeDataKey}
             theme={themeList[theme]}
           />
         ) : (
@@ -218,6 +272,7 @@ export default function Home() {
                       </th>
                       <th scope="col">피카츄</th>
                       <th scope="col">이브이</th>
+                      <th scope="col">꼬부기</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -225,31 +280,36 @@ export default function Home() {
                       <th scope="row">2024</th>
                       <td>100</td>
                       <td>30</td>
+                      <td>3</td>
                     </tr>
                     <tr>
                       <th scope="row">2025</th>
                       <td>55</td>
                       <td>12</td>
+                      <td>5</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            <TwoCategoryClusterChart
+            <ThreeCategoryClusterChart
               myData={[
                 {
-                  year: 2024,
+                  year: "2024",
                   ["피카츄"]: 100,
                   ["이브이"]: 30,
+                  ["꼬부기"]: 3,
                 },
                 {
-                  year: 2025,
+                  year: "2025",
                   ["피카츄"]: 55,
                   ["이브이"]: 12,
+                  ["꼬부기"]: 5,
                 },
               ]}
               firstDataKey="피카츄"
               secondDataKey="이브이"
+              threeDataKey="꼬부기"
               theme={themeList[theme]}
             />
           </div>
