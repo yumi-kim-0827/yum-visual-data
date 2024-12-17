@@ -29,6 +29,10 @@ body {
   display: none;
 }
 
+.text-pentone {
+  color: #a57865;
+}
+
 /* 스크롤 custom */
 .overflow-y-auto::-webkit-scrollbar {
   width: 10px;

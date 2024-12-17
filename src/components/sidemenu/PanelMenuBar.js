@@ -93,6 +93,11 @@ export default function PanelMenuBar() {
           icon: "pi pi-palette",
           command: () => router.push("/tools/colorPick"),
         },
+        {
+          label: "2가지 색상 조합",
+          icon: "pi pi-palette",
+          command: () => router.push("/tools/twotonecolor"),
+        },
       ],
     },
   ];
