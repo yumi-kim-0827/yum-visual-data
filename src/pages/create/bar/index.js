@@ -68,23 +68,22 @@ export default function Home() {
                   </caption>
                   <thead className="border-1">
                     <tr className="border-b-1 border-blue-400">
-                      <th scope="col" className="w-1/4">
-                        순서
-                      </th>
                       <th scope="col">데이터 명</th>
                       <th scope="col">값</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">첫번째 데이터</th>
                       <td>피카츄</td>
                       <td>50</td>
                     </tr>
                     <tr>
-                      <th scope="row">두번째 데이터</th>
                       <td>이브이</td>
                       <td>51</td>
+                    </tr>
+                    <tr>
+                      <td>꼬부기</td>
+                      <td>40</td>
                     </tr>
                   </tbody>
                 </table>
@@ -99,6 +98,10 @@ export default function Home() {
                 {
                   category: "이브이",
                   value: 51,
+                },
+                {
+                  category: "꼬부기",
+                  value: 40,
                 },
               ]}
               theme={themeList[theme]}

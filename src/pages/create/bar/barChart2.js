@@ -233,12 +233,10 @@ export default function Home() {
                   </caption>
                   <thead className="border-1">
                     <tr className="border-b-1 border-blue-400">
-                      <th scope="col" className="w-1/4">
-                        데이터
-                      </th>
+                      <th scope="col" className="w-1/4"></th>
                       <th scope="col">비교군 이름</th>
                       <th scope="col">데이터 명 (같아야함)과 값</th>
-                      <th scope="col">값</th>
+                      <th scope="col">데이터 명 (같아야함)과 값</th>
                     </tr>
                   </thead>
                   <tbody>
