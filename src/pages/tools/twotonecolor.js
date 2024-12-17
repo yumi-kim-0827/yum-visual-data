@@ -44,7 +44,7 @@ const Home = () => {
         </Card>
         <Card pt={{ content: { style: { padding: "0" } } }} className="mb-2">
           <div className="flex items-center gap-2">
-            <h3>2025 팬톤 컬러팔레트 조합 </h3>
+            <h3>2025 팬톤 컬러팔레트 조합</h3>
             <Message
               text="색상을 클릭하면 HEX 코드가 복사됩니다."
               style={{

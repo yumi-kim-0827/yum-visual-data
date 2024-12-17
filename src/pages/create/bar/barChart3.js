@@ -62,10 +62,6 @@ export default function Home() {
   //색상 테마 선택 index
   const [theme, setTheme] = useState(0);
 
-  //   const data1propertyCount = Object.keys(myData[0]).length;
-  const data1propertyCount = 2;
-  //   const data2propertyCount = Object.keys(myData[1]).length;
-
   //색상 테마 상태 업데이트 함수
   const handleSelectTheme = (themeNumber) => {
     setTheme(themeNumber);
@@ -191,7 +187,7 @@ export default function Home() {
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         <ColorPickerContainer handleSelectTheme={handleSelectTheme} />
         {/* 두 데이터가 담기는 객체 수가 각각 2개 이상일때 */}
-        {data1propertyCount > 1 ? (
+        {firstDataKey !== "" && secondDataKey !== "" > 0 ? (
           <TwoCategoryClusterChart
             myData={myData}
             firstDataKey={firstDataKey}
@@ -216,31 +212,44 @@ export default function Home() {
                   <thead className="border-1">
                     <tr className="border-b-1 border-blue-400">
                       <th scope="col" className="w-1/4">
-                        데이터
+                        연도
                       </th>
-                      <th scope="col">비교군 이름</th>
-                      <th scope="col">데이터 명 (같아야함)과 값</th>
-                      <th scope="col">값</th>
+                      <th scope="col">피카츄</th>
+                      <th scope="col">이브이</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">첫번째 비교군</th>
-                      <td>피카츄</td>
-                      <td>파워 : 13</td>
-                      <td>높이뛰기 : 50</td>
+                      <th scope="row">2024</th>
+                      <td>100</td>
+                      <td>30</td>
                     </tr>
                     <tr>
-                      <th scope="row">두번째 비교군</th>
-                      <td>이브이</td>
-                      <td>파워 : 56</td>
-                      <td>높이뛰기 : 19</td>
+                      <th scope="row">2025</th>
+                      <td>55</td>
+                      <td>12</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            <TwoCategoryClusterChart myData={myData} theme={themeList[theme]} />
+            <TwoCategoryClusterChart
+              myData={[
+                {
+                  year: 2024,
+                  ["피카츄"]: 100,
+                  ["이브이"]: 30,
+                },
+                {
+                  year: 2025,
+                  ["피카츄"]: 55,
+                  ["이브이"]: 12,
+                },
+              ]}
+              firstDataKey="피카츄"
+              secondDataKey="이브이"
+              theme={themeList[theme]}
+            />
           </div>
         )}
       </Fieldset>
