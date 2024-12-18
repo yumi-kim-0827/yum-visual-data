@@ -28,6 +28,16 @@ export default function App({ Component, pageProps }) {
             gtag('config', 'G-DCKP3WS77X');
         `}
       </Script>
+      {/* Naver Analytics */}
+      <Script strategy="afterInteractive" src={`//wcs.naver.net/wcslog.js`} />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          if(!wcs_add) var wcs_add = {};
+          wcs_add["wa"] = "1066e22646a7ea0";
+          if(window.wcs) {
+          wcs_do();}
+        `}
+      </Script>
       <DefaultSeo
         title="visual infographic"
         description="로그인 없이 그래프와 차트 등 인포그래픽을 생성하세요, 간단히 데이터를 입력하여 직관적인 그래프와 지도에서 결과를 시각화하세요."
