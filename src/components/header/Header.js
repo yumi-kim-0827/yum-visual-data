@@ -67,8 +67,13 @@ export default function Header() {
       items: [
         {
           label: "이모지",
-          icon: "pi pi-palette",
+          icon: "pi pi-face-smile",
           command: () => router.push("/list/emoji"),
+        },
+        {
+          label: "특수문자 html 코드",
+          icon: "pi pi-face-smile",
+          command: () => router.push("/list/quotation"),
         },
       ],
     },
