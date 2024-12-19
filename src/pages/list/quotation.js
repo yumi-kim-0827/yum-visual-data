@@ -12,7 +12,9 @@ const Home = () => {
     { letter: "?", code: "&#63;", text: "물음표" },
     { letter: "!", code: "&#33;", text: "느낌표" },
     { letter: "~", code: "&#126;", text: "꼬리표" },
+    { letter: "-", code: "&#45;;", text: "하이픈" },
     { letter: "|", code: "&#124;", text: "수직선" },
+    { letter: "`", code: "&#96;", text: "양음 부호" },
     { letter: "<", code: "&lt;", text: "꺾쇠 괄호 열기" },
     { letter: ">", code: "&gt;", text: "꺾쇠 괄호 닫기" },
     { letter: '"', code: "&quot;", text: "큰따옴표" },
@@ -46,6 +48,7 @@ const Home = () => {
 
   const list3 = [
     { letter: "+", code: "&#43;", text: "더하기 기호" },
+    { letter: "*", code: "&#42;", text: "아스트릭" },
     { letter: "%", code: "&#37;", text: "백분율 기호" },
     { letter: "±", code: "&#177;", text: "더하기 빼기 기호" },
     { letter: "=", code: "&#61;", text: "등호" },

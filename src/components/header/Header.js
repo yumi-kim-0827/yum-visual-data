@@ -56,8 +56,13 @@ export default function Header() {
         },
         {
           label: "2가지 색상 조합",
-          icon: "pi pi-palette",
+          icon: "pi pi-objects-column",
           command: () => router.push("/tools/twotonecolor"),
+        },
+        {
+          label: "비밀번호 자동 생성기",
+          icon: "pi pi-asterisk",
+          command: () => router.push("/tools/makePassword"),
         },
       ],
     },
