@@ -61,6 +61,17 @@ export default function Header() {
         },
       ],
     },
+    {
+      label: "리스트 모음",
+      icon: "pi pi-wrench",
+      items: [
+        {
+          label: "이모지",
+          icon: "pi pi-palette",
+          command: () => router.push("/list/emoji"),
+        },
+      ],
+    },
   ];
 
   const endContent = (
