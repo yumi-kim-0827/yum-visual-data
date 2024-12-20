@@ -6,10 +6,12 @@ import { Dropdown } from "primereact/dropdown";
 import { Card } from "primereact/card";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
+import { Message } from "primereact/message";
 
 const Home = () => {
   const [textNumber, setTextNumber] = useState(25);
   const [passwordOp, setPasswordOp] = useState(null);
+  const [generatedPw, setGeneratedPw] = useState("");
   const passwordOptions = [
     { name: "숫자만", code: "passwordOp1" },
     { name: "소문자 영어만", code: "passwordOp2" },
@@ -46,6 +48,18 @@ const Home = () => {
     return result;
   };
 
+  // 대문자 영어만 passwordOp3
+  const generateRandomUppercaseString = (length) => {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return result;
+  };
+
   const handlePasswordGenerate = () => {
     let result = ""; // 초기화된 결과 변수
     switch (passwordOp?.code) {
@@ -55,11 +69,14 @@ const Home = () => {
       case "passwordOp2":
         result = generateRandomString(textNumber);
         break;
+      case "passwordOp3":
+        result = generateRandomUppercaseString(textNumber);
+        break;
       default:
         alert("옵션을 선택하세요.");
         return;
     }
-    alert(`${result}`);
+    setGeneratedPw(result);
   };
 
   return (
@@ -105,6 +122,10 @@ const Home = () => {
               onClick={handlePasswordGenerate}
             />
           </div>
+        </Card>
+        <h3>비밀번호 생성 결과</h3>
+        <Card pt={{ content: { style: { padding: "0" } } }}>
+          <p>{generatedPw}</p>
         </Card>
       </Fieldset>
     </main>
