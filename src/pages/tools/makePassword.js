@@ -8,7 +8,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 
 const Home = () => {
-  const [value3, setValue3] = useState(25);
+  const [textNumber, setTextNumber] = useState(25);
   const [passwordOp, setPasswordOp] = useState(null);
   const passwordOptions = [
     { name: "숫자만", code: "passwordOp1" },
@@ -23,6 +23,44 @@ const Home = () => {
     { name: "소문자영어 + 특수문자", code: "passwordOp10" },
     { name: "대문자영어 + 특수문자", code: "passwordOp11" },
   ];
+
+  // 숫자만 passwordOp1
+  const generateRandomNumberString = (length) => {
+    let result = "";
+    const digits = "0123456789";
+    for (let i = 0; i < length; i++) {
+      result += digits.charAt(Math.floor(Math.random() * digits.length));
+    }
+    return result;
+  };
+
+  // 소문자 영어만 passwordOp2
+  const generateRandomString = (length) => {
+    let result = "";
+    const characters = "abcdefghijklmnopqrstuvwxyz";
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return result;
+  };
+
+  const handlePasswordGenerate = () => {
+    let result = ""; // 초기화된 결과 변수
+    switch (passwordOp?.code) {
+      case "passwordOp1":
+        result = generateRandomNumberString(textNumber);
+        break;
+      case "passwordOp2":
+        result = generateRandomString(textNumber);
+        break;
+      default:
+        alert("옵션을 선택하세요.");
+        return;
+    }
+    alert(`${result}`);
+  };
 
   return (
     <main className="w-full">
@@ -39,8 +77,8 @@ const Home = () => {
               </label>
               <InputNumber
                 inputId="minmax-buttons"
-                value={value3}
-                onValueChange={(e) => setValue3(e.value)}
+                value={textNumber}
+                onValueChange={(e) => setTextNumber(e.value)}
                 mode="decimal"
                 showButtons
                 min={0}
@@ -64,6 +102,7 @@ const Home = () => {
               label="패쓰워드 생성하기"
               icon="pi pi-check"
               iconPos="right"
+              onClick={handlePasswordGenerate}
             />
           </div>
         </Card>
