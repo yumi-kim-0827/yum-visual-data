@@ -111,7 +111,7 @@ export default function Home() {
                   className="w-full"
                   disabled={inputDisable}
                 />
-                <label htmlFor="username">첫번째 데이터 명</label>
+                <label htmlFor="username">피카츄</label>
               </FloatLabel>
             </div>
             <div className="flex-1 flex flex-col items-start gap-2">
@@ -131,7 +131,7 @@ export default function Home() {
                   className="w-full"
                   disabled={inputDisable}
                 />
-                <label htmlFor="username">두번째 데이터 명</label>
+                <label htmlFor="username">이브이</label>
               </FloatLabel>
             </div>
             <div className="flex-1 flex flex-col items-start gap-2">
@@ -151,7 +151,7 @@ export default function Home() {
                   className="w-full"
                   disabled={inputDisable}
                 />
-                <label htmlFor="username">세번째 데이터 명</label>
+                <label htmlFor="username">꼬부기</label>
               </FloatLabel>
             </div>
           </div>

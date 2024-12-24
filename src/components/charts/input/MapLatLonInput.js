@@ -35,7 +35,6 @@ const MapLatLonInput = ({ handleClickDataUpdate, handleClickDataDelete }) => {
         latitude: parseFloat(input.latitude),
         longitude: parseFloat(input.longitude),
       });
-      console.log(input);
     }
     setInput({
       title: "",

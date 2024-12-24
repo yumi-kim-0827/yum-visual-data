@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //components
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
@@ -8,35 +8,32 @@ import { Button } from "primereact/button";
 //data
 import nationIsoList from "@/src/data/wordlowlist";
 
-const MapSelectCoutry = () => {
-  const [selectedNation, setSelectedNation] = useState(null);
-  //입력 데이터
-  const [input, setInput] = useState(null);
-
-  console.log(input);
-
-  const onChange = (e) => {
-    setInput(e.value);
-  };
+const MapSelectCoutry = ({ handleClickDataUpdate, handleClickDataDelete }) => {
+  const [selectedData, setSelectedData] = useState({
+    id: "",
+    name: "",
+    value: null,
+  });
 
   const onSubmit = () => {
-    if (isNaN(input.value)) {
+    if (isNaN(selectedData.value)) {
       alert("입력값은 숫자여야 합니다.");
-    } else if (input.category === "") {
-      alert("데이터명을 입력해주세요.");
+    } else if (!selectedData.value) {
+      alert("수치를 입력해주세요");
     } else {
-      handleClickDataUpdate(input);
+      handleClickDataUpdate(selectedData);
     }
-    setInput({
-      category: "",
-      value: 0,
+    setSelectedData({
+      id: "",
+      name: "",
+      value: null,
     });
   };
 
   const onDelete = () => {
     handleClickDataDelete();
   };
-  console.log(nationIsoList);
+
   return (
     <>
       <div className="flex flex-col gap-2 mb-4">
@@ -47,19 +44,35 @@ const MapSelectCoutry = () => {
         <div className="flex items-center gap-4">
           <label>나라 선택</label>
           <Dropdown
-            value={selectedNation}
-            onChange={(e) => setSelectedNation(e.value)}
+            value={selectedData.id} // 선택된 값의 ID를 설정
+            onChange={(e) => {
+              const selectedNation = nationIsoList.find(
+                (nation) => nation.id === e.value
+              ); // 선택된 나라를 찾음
+              setSelectedData((prev) => ({
+                ...prev,
+                id: selectedNation.id,
+                name: selectedNation.korean, // 한글 이름 저장
+              }));
+            }}
             options={nationIsoList}
-            optionLabel="korean"
-            placeholder="Select a City"
+            optionLabel="korean" // 드롭다운에 표시할 라벨
+            optionValue="id" // 선택 시 반환할 값
+            placeholder="나라를 선택하세요"
             className="flex-1"
           />
         </div>
         <FloatLabel>
           <InputNumber
             inputId="integeronly"
-            value={input}
-            onChange={onChange}
+            name="value"
+            value={selectedData.value}
+            onChange={(e) => {
+              setSelectedData((prev) => ({
+                ...prev,
+                value: e.value,
+              }));
+            }}
             className="w-full"
           />
           <label htmlFor="username">데이터값</label>

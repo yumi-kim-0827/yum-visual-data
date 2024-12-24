@@ -30,7 +30,10 @@ export default function Home() {
         legend="데이터 추가하기"
         className="w-1/3 h-full overflow-y-auto"
       >
-        <MapSelectCoutry />
+        <MapSelectCoutry
+          handleClickDataUpdate={handleClickDataUpdate}
+          handleClickDataDelete={handleClickDataDelete}
+        />
       </Fieldset>
       <Fieldset legend="그래프" className="w-2/3 h-full overflow-y-auto">
         <MapRangeCreate myData={myData} />

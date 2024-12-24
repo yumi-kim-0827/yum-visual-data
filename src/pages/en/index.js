@@ -26,12 +26,12 @@ export default function Home() {
         className="w-full h-full overflow-y-auto"
       >
         <div className="flex items-center justify-between">
-          <div className="w-1/3">
-            <h2 className="text-5xl">
+          <div className="pl-4 w-1/3">
+            <h2 className="text-5xl leading-relaxed">
               Visualize data on graphs and maps without the need to log in, and
               make better decisions.
             </h2>
-            <p className="text-2xl">
+            <p className="text-2xl leading-relaxed">
               Simply input your data and see it rendered on intuitive graphs and
               maps. Leverage visualized infographics to your advantage.
             </p>
